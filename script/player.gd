@@ -33,9 +33,9 @@ func play_anim(dir):
 		
 		if dir.x > 0.5 and dir.y < -0.5:
 			$AnimatedSprite2D.play("ne_walk")
-		if dir.x > 0.5 and dir.y > -0.5:
+		if dir.x > 0.5 and dir.y > 0.5:
 			$AnimatedSprite2D.play("se_walk")
-		if dir.x < 0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("nw_walk")
-		if dir.x < 0.5 and dir.y > -0.5:
-			$AnimatedSprite2D.play("sw_walk")		
+		if dir.x < -0.5 and dir.y > 0.5:
+			$AnimatedSprite2D.play("sw_walk")
+		if dir.x < -0.5 and dir.y < -0.5:
+			$AnimatedSprite2D.play("nw_walk")		
