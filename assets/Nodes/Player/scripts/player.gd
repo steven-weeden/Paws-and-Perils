@@ -4,6 +4,8 @@ var speed = 75
 
 var player_state 
 
+@export var inv: inventory
+
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	

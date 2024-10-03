@@ -1,7 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=31 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
+[ext_resource type="PackedScene" uid="uid://ctsx5fg1n56vn" path="res://assets/Nodes/Background/parallex_background.tscn" id="2_ge1t3"]
+[ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
+
+[sub_resource type="Resource" id="Resource_aenet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct8fr"]
 atlas = ExtResource("1_3k1jf")
@@ -213,16 +217,44 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nrno"]
-radius = 5.09902
+radius = 3.0
 
 [node name="player" type="CharacterBody2D"]
-position = Vector2(113, 76)
+y_sort_enabled = true
+position = Vector2(274, 154)
 script = ExtResource("1_crmlk")
+inv = SubResource("Resource_aenet")
+
+[node name="ParallexBackground" parent="." instance=ExtResource("2_ge1t3")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0htd3")
 animation = &"e_walk"
+offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+z_index = 20
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_7nrno")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 2.61799
+zoom = Vector2(3.5, 3.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("4_rcyyu")]
+z_index = 22
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1840.0
+offset_top = -332.0
+offset_right = -1755.0
+offset_bottom = -289.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(6, 6)

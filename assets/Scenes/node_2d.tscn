@@ -1,65 +1,56 @@
-[gd_scene load_steps=7 format=3 uid="uid://crloxy3tqdn4q"]
+[gd_scene load_steps=6 format=3 uid="uid://crloxy3tqdn4q"]
 
 [ext_resource type="PackedScene" uid="uid://4wiwdrn7dgjf" path="res://assets/Nodes/Maps1/AlleyIntro.tscn" id="5_g2xv4"]
 [ext_resource type="Texture2D" uid="uid://bg8o2hacx2823" path="res://assets/Sprites/parallexBackground/blue-back.png" id="23_6twex"]
 [ext_resource type="Texture2D" uid="uid://daibbcinfl6js" path="res://assets/Sprites/parallexBackground/prop-planet-big.png" id="24_pvg32"]
 [ext_resource type="Texture2D" uid="uid://ddci2ctxt5kai" path="res://assets/Sprites/parallexBackground/prop-planet-small.png" id="25_pte25"]
 [ext_resource type="Texture2D" uid="uid://bd7tqy25jho7t" path="res://assets/Sprites/parallexBackground/blue-stars.png" id="26_5klij"]
-[ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="27_062jb"]
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(19, 27)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="ParallexBackground" type="Node2D" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="ParallexBackground"]
 
-[node name="Background" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="Background" type="ParallaxLayer" parent="ParallexBackground/ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(400, 240)
 
-[node name="Blue-with-stars" type="Sprite2D" parent="Node2D/ParallaxBackground/Background"]
+[node name="Blue-with-stars" type="Sprite2D" parent="ParallexBackground/ParallaxBackground/Background"]
 position = Vector2(204, 120)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("23_6twex")
 
-[node name="Planet1" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="Planet1" type="ParallaxLayer" parent="ParallexBackground/ParallaxBackground"]
 position = Vector2(200, 117)
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(300, 170)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/Planet1"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallexBackground/ParallaxBackground/Planet1"]
 position = Vector2(-88.825, 29.825)
 scale = Vector2(2, 2)
 texture = ExtResource("24_pvg32")
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallexBackground/ParallaxBackground"]
 position = Vector2(200, 117)
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(300, 170)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer4"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallexBackground/ParallaxBackground/ParallaxLayer4"]
 position = Vector2(108, -41)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("25_pte25")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallexBackground/ParallaxBackground"]
 position = Vector2(200, 117)
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(400, 240)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallexBackground/ParallaxBackground/ParallaxLayer2"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("26_5klij")
 
-[node name="Node2D2" parent="." instance=ExtResource("5_g2xv4")]
-position = Vector2(181, 90)
-
-[node name="Player" type="Node2D" parent="."]
-
-[node name="player2" parent="Player" instance=ExtResource("27_062jb")]
-visible = false
-position = Vector2(181, 90)
-
-[node name="Camera2D" type="Camera2D" parent="Player/player2"]
-zoom = Vector2(3.75, 3.75)
+[node name="IntroAlley" parent="." instance=ExtResource("5_g2xv4")]
+position = Vector2(180, 90)
