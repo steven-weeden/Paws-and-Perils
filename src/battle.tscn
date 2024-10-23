@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cck8xu301jnty"]
+
+[ext_resource type="Texture2D" uid="uid://dib7emqfct634" path="res://assets/environmentalSprites/Battle/battleback1.png" id="1_hlbci"]
+[ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="2_3s3vl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1e7q"]
+bg_color = Color(0.96712, 0.246789, 0.0463605, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eviq0"]
+bg_color = Color(0.101961, 0.847059, 0, 1)
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -498.0
+offset_top = -232.0
+offset_right = -498.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -92.0
+offset_right = 1074.0
+offset_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hlbci")
+
+[node name="EnemyContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 350.0
+offset_top = 74.5
+offset_right = 650.0
+offset_bottom = 474.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_k1e7q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eviq0")
+step = 1.0
+value = 50.0
+
+[node name="Enemy" type="TextureRect" parent="EnemyContainer"]
+layout_mode = 2
+texture = ExtResource("2_3s3vl")
