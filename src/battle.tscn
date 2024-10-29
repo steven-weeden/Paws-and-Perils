@@ -1,27 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://cck8xu301jnty"]
+[gd_scene load_steps=9 format=3 uid="uid://cck8xu301jnty"]
 
 [ext_resource type="Texture2D" uid="uid://dib7emqfct634" path="res://assets/environmentalSprites/Battle/battleback1.png" id="1_hlbci"]
 [ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="2_3s3vl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1e7q"]
-bg_color = Color(0.96712, 0.246789, 0.0463605, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk08c"]
+bg_color = Color(0.787567, 0.0362762, 0.0966284, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eviq0"]
-bg_color = Color(0.101961, 0.847059, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxtmf"]
+bg_color = Color(0.269135, 0.709203, 0.207541, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8vnp"]
+bg_color = Color(0, 0, 0, 0.462745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayxhq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbe7v"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p76r"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="Battle" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -498.0
-offset_top = -232.0
-offset_right = -498.0
-offset_bottom = -232.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -30,33 +47,172 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -92.0
-offset_right = 1074.0
-offset_bottom = 556.0
+offset_left = -575.0
+offset_top = -323.5
+offset_right = 575.0
+offset_bottom = 323.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_hlbci")
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -169.0
+offset_right = 132.5
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.964887, 0.852111)
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_kk08c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xxtmf")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="EnemyContainer/ProgressBar"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 350.0
-offset_top = 74.5
-offset_right = 650.0
-offset_bottom = 474.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
-layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_k1e7q")
-theme_override_styles/fill = SubResource("StyleBoxFlat_eviq0")
-step = 1.0
-value = 50.0
+theme_override_font_sizes/font_size = 30
+text = "HP: 25/50"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Enemy" type="TextureRect" parent="EnemyContainer"]
 layout_mode = 2
 texture = ExtResource("2_3s3vl")
+
+[node name="PlayerPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g8vnp")
+
+[node name="PlayerData" type="HBoxContainer" parent="PlayerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.95
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PlayerPanel/PlayerData"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 40
+text = "PLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/PlayerData"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_kk08c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xxtmf")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="PlayerPanel/PlayerData/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "HP: 25/50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionsPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -2.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g8vnp")
+
+[node name="Actions" type="HBoxContainer" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.5
+offset_top = -36.5
+offset_right = 578.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Attack" type="Button" parent="ActionsPanel/Actions"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ayxhq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wbe7v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ayxhq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0p76r")
+text = "ATTACK"
+
+[node name="Defend" type="Button" parent="ActionsPanel/Actions"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ayxhq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wbe7v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ayxhq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0p76r")
+text = "DEFEND"
+
+[node name="Run" type="Button" parent="ActionsPanel/Actions"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ayxhq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wbe7v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ayxhq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0p76r")
+text = "RUN"
