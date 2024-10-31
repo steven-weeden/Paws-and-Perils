@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cck8xu301jnty"]
+[gd_scene load_steps=11 format=3 uid="uid://cck8xu301jnty"]
 
 [ext_resource type="Texture2D" uid="uid://dib7emqfct634" path="res://assets/environmentalSprites/Battle/battleback1.png" id="1_hlbci"]
+[ext_resource type="Script" path="res://src/battle.gd" id="1_iw20h"]
 [ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="2_3s3vl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk08c"]
@@ -35,10 +36,22 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6q4p"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
 [node name="Battle" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iw20h")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -216,3 +229,35 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wbe7v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ayxhq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0p76r")
 text = "RUN"
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6q4p")
+
+[node name="Label" type="Label" parent="TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "An Enemy appears!"
+
+[node name="Ticker" type="Label" parent="TextBox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = ">"
