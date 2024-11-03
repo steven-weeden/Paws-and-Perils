@@ -145,11 +145,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_kk08c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xxtmf")
+max_value = 35.0
 step = 1.0
-value = 50.0
+value = 1.0
 show_percentage = false
 
-[node name="Health" type="Label" parent="PlayerPanel/PlayerData/ProgressBar"]
+[node name="Label" type="Label" parent="PlayerPanel/PlayerData/ProgressBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,6 +232,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0p76r")
 text = "RUN"
 
 [node name="TextBox" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -261,3 +263,5 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = ">"
+
+[connection signal="pressed" from="ActionsPanel/Actions/Run" to="." method="_on_run_pressed"]
