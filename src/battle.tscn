@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cck8xu301jnty"]
+[gd_scene load_steps=20 format=3 uid="uid://cck8xu301jnty"]
 
 [ext_resource type="Texture2D" uid="uid://dib7emqfct634" path="res://assets/environmentalSprites/Battle/battleback1.png" id="1_hlbci"]
 [ext_resource type="Script" path="res://src/battle.gd" id="1_iw20h"]
 [ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="2_3s3vl"]
 [ext_resource type="Resource" uid="uid://clxk1s72gvsto" path="res://src/Sans.tres" id="2_bu0v6"]
 [ext_resource type="Resource" uid="uid://slf2xmhvvj8" path="res://src/Elephant.tres" id="2_tpqfq"]
+[ext_resource type="AudioStream" uid="uid://bm3dg7upatem2" path="res://assets/environmentalSprites/Battle/jump.wav" id="6_t0quu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk08c"]
 bg_color = Color(0.787567, 0.0362762, 0.0966284, 1)
@@ -392,6 +393,9 @@ text = ">"
 libraries = {
 "": SubResource("AnimationLibrary_sbe83")
 }
+
+[node name="click_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_t0quu")
 
 [connection signal="pressed" from="ActionsPanel/Actions/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ActionsPanel/Actions/Defend" to="." method="_on_defend_pressed"]

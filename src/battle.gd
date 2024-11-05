@@ -86,6 +86,8 @@ func enemy_turn():
 			get_tree().quit()
 
 func _on_run_pressed() -> void:
+	$click_sound.play()
+	
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))
@@ -93,6 +95,8 @@ func _on_run_pressed() -> void:
 
 
 func _on_attack_pressed() -> void:
+	$click_sound.play()
+	
 	display_text("You swing your paw")
 	await display_text_and_wait("You swing your paw")
 	
@@ -121,6 +125,7 @@ func _on_attack_pressed() -> void:
 
 
 func _on_defend_pressed() -> void:
+	$click_sound.play()
 	is_defending = true
 	
 	display_text("you brace your paws ready for defense")
