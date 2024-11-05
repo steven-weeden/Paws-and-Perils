@@ -2,13 +2,26 @@ extends Control
 
 signal textbox_closed
 
+@export var enemy: Resource = null
+
+var current_player_health = 0
+var current_enemy_health = 0
+var is_defending = false
+
+
 func _ready():
+	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
+	$EnemyContainer/Enemy.texture = enemy.texture
+	
+	current_player_health = State.current_health
+	current_enemy_health = enemy.health
+	
 	$TextBox.hide()
 	$ActionsPanel.hide()
 	
-	display_text("A wild enemy appears!")
-	await display_text_and_wait("A wild enemy appears!")
+	display_text("A wild %s appears!" % enemy.name)
+	await display_text_and_wait("A wild %s appears!" % enemy.name)
 	$ActionsPanel.show()
 
 func set_health(progress_bar, health, max_health):
@@ -26,14 +39,73 @@ func display_text_and_wait(text) -> void:
 	display_text(text)
 	await textbox_closed
 	print("TextBox has been closed")
+	$ActionsPanel.show()
 
 func display_text(text):
+	$ActionsPanel.hide()
 	$TextBox/Label.text = text
 	$TextBox.show()
 
+func enemy_turn():
+	display_text("%s swings at you" % enemy.name)
+	await display_text_and_wait("%s swings at you" % enemy.name)
+	
+	if is_defending:
+		is_defending = false
+		
+		display_text("You defended successfully!")
+		await display_text_and_wait("You defended successfully!")
+	else:
+		current_player_health = max(0, current_player_health - enemy.damage)
+		set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
+	
+		$AnimationPlayer.play("take_damage")
+		await $AnimationPlayer.animation_finished
+	
+		display_text("You took %d damage!" % enemy.damage)
+		await display_text_and_wait("You took %d damage!" % enemy.damage)
 
 func _on_run_pressed() -> void:
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))
 	get_tree().quit()
+
+
+func _on_attack_pressed() -> void:
+	display_text("You swing your paw")
+	await display_text_and_wait("You swing your paw")
+	
+	current_enemy_health = max(0, current_enemy_health - State.damage)
+	set_health($EnemyContainer/ProgressBar, current_enemy_health, enemy.health)
+	
+	$AnimationPlayer.play("enemy_damaged")
+	await $AnimationPlayer.animation_finished
+	
+	display_text("You dealt %d damage!" % State.damage)
+	await display_text_and_wait("You dealt %d damage!" % State.damage)
+	
+	if current_enemy_health == 0:
+		display_text("MEOWTASTIC! You defeated %s!" % enemy.name)
+		await display_text_and_wait("MEOWTASTIC! You defeated %s!" % enemy.name)
+		
+		$AnimationPlayer.play("DEATH")
+		await $AnimationPlayer.animation_finished
+		
+		await get_tree().create_timer(0.25).timeout
+		get_tree().quit()
+
+	
+	enemy_turn()
+	
+
+
+func _on_defend_pressed() -> void:
+	is_defending = true
+	
+	display_text("you brace your paws ready for defense")
+	await display_text_and_wait("you brace your paws ready for defense")
+	
+	enemy_turn()
+	
+	
