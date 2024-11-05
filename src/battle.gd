@@ -64,6 +64,22 @@ func enemy_turn():
 	
 		display_text("You took %d damage!" % enemy.damage)
 		await display_text_and_wait("You took %d damage!" % enemy.damage)
+		
+		if current_player_health == 0:
+			display_text("MEOUCH! you died!")
+			await display_text_and_wait("MEOUCH! you died!")
+			
+			$ActionsPanel.hide()
+			$PlayerPanel.hide()
+			$EnemyContainer.hide()
+			
+			$AnimationPlayer.play("player_death")
+			await $AnimationPlayer.animation_finished
+			
+			
+			
+			await get_tree().create_timer(0.25).timeout
+			get_tree().quit()
 
 func _on_run_pressed() -> void:
 	display_text("Got away safely!")
