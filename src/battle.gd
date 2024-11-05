@@ -2,6 +2,7 @@ extends Control
 
 signal textbox_closed
 
+@export var enemies: Array = []  # Array of enemy Resource `.tres` files
 @export var enemy: Resource = null
 
 var current_player_health = 0
@@ -10,6 +11,9 @@ var is_defending = false
 
 
 func _ready():
+	randomize()  # Initialize random number generator
+	enemy = enemies[int(randf() * enemies.size())]  # Randomly select an enemy
+	
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
 	$EnemyContainer/Enemy.texture = enemy.texture
