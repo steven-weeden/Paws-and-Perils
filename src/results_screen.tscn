@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://re1ufmrhsaa8"]
+[gd_scene load_steps=14 format=3 uid="uid://re1ufmrhsaa8"]
 
 [ext_resource type="Texture2D" uid="uid://cr5yu3hy08v7c" path="res://assets/environmentalSprites/VictoryScreen/il_fullxfull.4707100082_t0ek.jpg.png" id="1_8xgli"]
+[ext_resource type="Script" path="res://src/results_screen.gd" id="1_brcal"]
 [ext_resource type="Texture2D" uid="uid://bekudmysv361b" path="res://assets/environmentalSprites/VictoryScreen/279c04744561021-2.png" id="2_5wpj1"]
+[ext_resource type="Texture2D" uid="uid://bugifvj365pb8" path="res://assets/environmentalSprites/VictoryScreen/PINK.png" id="4_4xp0f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1aj0"]
 bg_color = Color(1, 1, 1, 1)
@@ -26,14 +28,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerContainer/Player:flip_h")
+tracks/0/path = NodePath("Player:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 0.766667),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 174), Vector2(0, 220), Vector2(0, 174)]
 }
 
 [sub_resource type="Animation" id="Animation_drhtt"]
@@ -41,7 +55,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerContainer/Player:flip_h")
+tracks/0/path = NodePath("Player:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,6 +63,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 174)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dw2ky"]
@@ -75,6 +101,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_brcal")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -85,45 +112,40 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_8xgli")
 
-[node name="PlayerContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-
-[node name="Player" type="TextureRect" parent="PlayerContainer"]
+[node name="Player" type="TextureRect" parent="."]
+top_level = true
 layout_mode = 2
+offset_top = 174.0
+offset_right = 300.0
+offset_bottom = 474.0
 texture = ExtResource("2_5wpj1")
 
 [node name="Gold" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -255.0
-offset_bottom = 188.0
+top_level = true
+layout_mode = 2
+offset_left = 997.0
+offset_top = 88.0
+offset_right = 1136.0
+offset_bottom = 157.0
 grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
 text = "GOLD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EXP" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -71.0
-offset_right = -1.0
-offset_bottom = 85.0
+top_level = true
+layout_mode = 2
+offset_left = 884.0
+offset_top = 279.0
+offset_right = 1133.0
+offset_bottom = 348.0
 grow_horizontal = 0
 grow_vertical = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
 text = "EXP"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -183,3 +205,31 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "LVL 1"
+
+[node name="Panel1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 902.0
+offset_top = -44.0
+offset_right = 1152.0
+offset_bottom = 430.0
+texture = ExtResource("4_4xp0f")
+
+[node name="Panel2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.729412)
+layout_mode = 0
+offset_left = 841.0
+offset_top = -44.0
+offset_right = 1091.0
+offset_bottom = 430.0
+texture = ExtResource("4_4xp0f")
+
+[node name="Panel3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.458824)
+layout_mode = 0
+offset_left = 793.0
+offset_top = -43.0
+offset_right = 1043.0
+offset_bottom = 431.0
+texture = ExtResource("4_4xp0f")
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

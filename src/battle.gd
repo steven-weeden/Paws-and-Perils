@@ -120,13 +120,31 @@ func _on_attack_pressed() -> void:
 		$AnimationPlayer.play("DEATH")
 		await $AnimationPlayer.animation_finished
 		
-		await get_tree().create_timer(0.25).timeout
-		get_tree().quit()
+		await show_results_screen()
+		return
 
 	
 	enemy_turn()
 	
+	
+func show_results_screen():
+	var results_scene = preload("res://src/results_screen.tscn")
+	var results_screen = results_scene.instantiate()
+	
+	results_screen.get_node("EXP").text = "Gained %s XP!" % enemy.EXPDefeat
+	results_screen.get_node("Gold").text = "Stole: %s Gold!" % enemy.GoldDefeat
+	
+	get_tree().current_scene.add_child(results_screen)
+	
+	$ActionsPanel.hide()
+	$PlayerPanel.hide()
+	$EnemyContainer.hide()
+	
+	results_screen.get_node("Continue").connect("pressed", Callable(self, "_on_continue_pressed"))
+	results_screen.show_screen()
 
+
+	
 
 func _on_defend_pressed() -> void:
 	$click_sound.play()

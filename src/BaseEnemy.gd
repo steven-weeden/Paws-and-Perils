@@ -4,3 +4,6 @@ extends Resource
 @export var texture: Texture = null
 @export var health: int = 30
 @export var damage: int = 20
+
+@export var EXPDefeat: int = 20
+@export var GoldDefeat: int = 5

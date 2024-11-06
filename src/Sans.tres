@@ -9,3 +9,5 @@ name = "sans"
 texture = ExtResource("2_46cwk")
 health = 50
 damage = 30
+EXPDefeat = 30
+GoldDefeat = 15

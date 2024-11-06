@@ -9,3 +9,5 @@ name = "Elephant"
 texture = ExtResource("2_61ts6")
 health = 40
 damage = 15
+EXPDefeat = 10
+GoldDefeat = 5
