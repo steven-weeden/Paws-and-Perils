@@ -1,10 +1,13 @@
 extends Control
 
 @onready var animation_player = $AnimationPlayer
+@onready var music_player = $MusicPlayer  # Reference to the AudioStreamPlayer node
+
 
 func show_screen():
 	# Play the animation when the results screen is shown
 	animation_player.play("results_cat")
+	music_player.play()  # Start the song
 
 func _ready():
 	# Optionally call show_screen automatically on scene load

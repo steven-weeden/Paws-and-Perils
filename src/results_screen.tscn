@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://re1ufmrhsaa8"]
+[gd_scene load_steps=15 format=3 uid="uid://re1ufmrhsaa8"]
 
 [ext_resource type="Texture2D" uid="uid://cr5yu3hy08v7c" path="res://assets/environmentalSprites/VictoryScreen/il_fullxfull.4707100082_t0ek.jpg.png" id="1_8xgli"]
 [ext_resource type="Script" path="res://src/results_screen.gd" id="1_brcal"]
 [ext_resource type="Texture2D" uid="uid://bekudmysv361b" path="res://assets/environmentalSprites/VictoryScreen/279c04744561021-2.png" id="2_5wpj1"]
 [ext_resource type="Texture2D" uid="uid://bugifvj365pb8" path="res://assets/environmentalSprites/VictoryScreen/PINK.png" id="4_4xp0f"]
+[ext_resource type="AudioStream" uid="uid://dl2ndcjrcod1t" path="res://assets/environmentalSprites/VictoryScreen/Mallow Castle - Kirby Super Star Ultra.mp3" id="5_f7fm3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1aj0"]
 bg_color = Color(1, 1, 1, 1)
@@ -163,6 +164,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_o1aj0")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i3j7d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tp5ln")
@@ -204,6 +206,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 30
 text = "LVL 1"
 
 [node name="Panel1" type="TextureRect" parent="."]
@@ -231,5 +234,10 @@ offset_top = -43.0
 offset_right = 1043.0
 offset_bottom = 431.0
 texture = ExtResource("4_4xp0f")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_f7fm3")
+volume_db = -10.0
+parameters/looping = true
 
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
