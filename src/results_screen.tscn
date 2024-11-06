@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://re1ufmrhsaa8"]
+
+[ext_resource type="Texture2D" uid="uid://cr5yu3hy08v7c" path="res://assets/environmentalSprites/VictoryScreen/il_fullxfull.4707100082_t0ek.jpg.png" id="1_8xgli"]
+[ext_resource type="Texture2D" uid="uid://bekudmysv361b" path="res://assets/environmentalSprites/VictoryScreen/279c04744561021-2.png" id="2_5wpj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1aj0"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3j7d"]
+bg_color = Color(0.99558, 0.99558, 0.99558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp5ln"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjyyj"]
+bg_color = Color(0.00119745, 0.00119745, 0.00119744, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_yawrc"]
+resource_name = "results_cat"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerContainer/Player:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_drhtt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerContainer/Player:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw2ky"]
+_data = {
+"RESET": SubResource("Animation_drhtt"),
+"results_cat": SubResource("Animation_yawrc")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0ks7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_182wv"]
+bg_color = Color(0.970458, 0.265631, 0.73549, 1)
+
+[node name="Results_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8xgli")
+
+[node name="PlayerContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Player" type="TextureRect" parent="PlayerContainer"]
+layout_mode = 2
+texture = ExtResource("2_5wpj1")
+
+[node name="Gold" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -255.0
+offset_bottom = 188.0
+grow_horizontal = 0
+text = "GOLD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXP" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -71.0
+offset_right = -1.0
+offset_bottom = 85.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -216.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_o1aj0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i3j7d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tp5ln")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjyyj")
+text = "CONTINUE"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dw2ky")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 895.0
+grow_vertical = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_p0ks7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_182wv")
+value = 25.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="VBoxContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LVL 1"

@@ -27,6 +27,10 @@ func _ready():
 	display_text("A wild %s appears!" % enemy.name)
 	await display_text_and_wait("A wild %s appears!" % enemy.name)
 	$ActionsPanel.show()
+	
+	if enemy.name == "sans":
+		display_text("Hey kiddo, How'd I end up here?")
+		await display_text_and_wait("Hey kiddo, How'd I end up here?")
 
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
