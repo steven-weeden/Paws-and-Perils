@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ils5jgncrr2o"]
+[gd_scene load_steps=6 format=3 uid="uid://ils5jgncrr2o"]
 
 [ext_resource type="Texture2D" uid="uid://bo1r00hcexd61" path="res://assets/environmentalSprites/DeathScreen/light_shine.jpg" id="1_w4v3g"]
 [ext_resource type="Texture2D" uid="uid://bekudmysv361b" path="res://assets/environmentalSprites/VictoryScreen/279c04744561021-2.png" id="2_qlow7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyhje"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b64yp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g7nk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="death_screen" type="Control"]
 layout_mode = 3
@@ -63,25 +76,37 @@ grow_vertical = 0
 
 [node name="Continue" type="Button" parent="ActionsPanel"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = -8.0
-offset_right = 8.0
-grow_vertical = 0
+offset_right = 224.0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
-text = "Continue"
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lyhje")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b64yp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8g7nk")
+text = "Load last Checkpoint"
 
-[node name="Button" type="Button" parent="ActionsPanel"]
+[node name="Load_Game" type="Button" parent="ActionsPanel"]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 11
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -31.0
+offset_left = -224.0
 grow_horizontal = 0
-grow_vertical = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lyhje")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b64yp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8g7nk")
 text = "Load Game"
