@@ -120,6 +120,10 @@ func _on_attack_pressed() -> void:
 		$AnimationPlayer.play("DEATH")
 		await $AnimationPlayer.animation_finished
 		
+		
+		State.currentEXP += enemy.EXPDefeat
+		
+		
 		await show_results_screen()
 		return
 
@@ -134,6 +138,10 @@ func show_results_screen():
 	results_screen.get_node("EXP").text = "Gained %s XP!" % enemy.EXPDefeat
 	results_screen.get_node("Gold").text = "Stole %s Gold!" % enemy.GoldDefeat
 	
+	# Update the XP progress bar on the results screen
+	var exp_bar = results_screen.get_node("VBoxContainer/ProgressBar")
+	exp_bar.value = State.currentEXP
+	exp_bar.max_value = State.EXPNext
 	
 	get_tree().current_scene.add_child(results_screen)
 	
