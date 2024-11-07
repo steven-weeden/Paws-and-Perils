@@ -134,6 +134,7 @@ func show_results_screen():
 	results_screen.get_node("EXP").text = "Gained %s XP!" % enemy.EXPDefeat
 	results_screen.get_node("Gold").text = "Stole %s Gold!" % enemy.GoldDefeat
 	
+	
 	get_tree().current_scene.add_child(results_screen)
 	
 	$ActionsPanel.hide()

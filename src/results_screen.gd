@@ -8,6 +8,8 @@ func show_screen():
 	# Play the animation when the results screen is shown
 	animation_player.play("results_cat")
 	music_player.play()  # Start the song
+	
+	# Set the XP progress
 
 func _ready():
 	# Optionally call show_screen automatically on scene load
