@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 75
+var speed = 150
 
 var player_state 
 

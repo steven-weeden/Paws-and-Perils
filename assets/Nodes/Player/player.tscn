@@ -216,45 +216,45 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7nrno"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rqt4"]
+size = Vector2(21.3333, 5.66667)
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(274, 154)
 script = ExtResource("1_crmlk")
 inv = SubResource("Resource_aenet")
 
-[node name="ParallexBackground" parent="." instance=ExtResource("2_ge1t3")]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(-2, 12)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0htd3")
 animation = &"e_walk"
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 20
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_7nrno")
+position = Vector2(9.53674e-07, -0.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_1rqt4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-rotation = 2.61799
-zoom = Vector2(3.5, 3.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("4_rcyyu")]
 z_index = 22
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.0
 anchor_bottom = 1.0
-offset_left = -1840.0
-offset_top = -332.0
-offset_right = -1755.0
-offset_bottom = -289.0
-grow_horizontal = 0
+offset_left = 40.0
+offset_top = -303.0
+offset_right = 125.0
+offset_bottom = -260.0
+grow_horizontal = 1
 grow_vertical = 0
 scale = Vector2(6, 6)
+size_flags_vertical = 4
+
+[node name="ParallexBackground" parent="CanvasLayer" instance=ExtResource("2_ge1t3")]
+z_index = -22
