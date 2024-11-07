@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cck8xu301jnty"]
+[gd_scene load_steps=21 format=3 uid="uid://cck8xu301jnty"]
 
 [ext_resource type="Script" path="res://src/battle.gd" id="1_iw20h"]
 [ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="2_3s3vl"]
 [ext_resource type="Resource" uid="uid://clxk1s72gvsto" path="res://src/Sans.tres" id="2_bu0v6"]
-[ext_resource type="Resource" uid="uid://slf2xmhvvj8" path="res://src/Elephant.tres" id="2_tpqfq"]
+[ext_resource type="Resource" uid="uid://slf2xmhvvj8" path="res://src/alley_cat.tres" id="2_tpqfq"]
 [ext_resource type="Texture2D" uid="uid://osv3yn45qavh" path="res://assets/environmentalSprites/Battle/fightbg.png" id="4_1exl3"]
+[ext_resource type="Resource" uid="uid://dtbmtt6sxbxgw" path="res://src/Bird.tres" id="4_4x0k8"]
 [ext_resource type="AudioStream" uid="uid://bm3dg7upatem2" path="res://assets/environmentalSprites/Battle/jump.wav" id="6_t0quu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk08c"]
@@ -175,7 +176,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iw20h")
-enemies = [ExtResource("2_tpqfq"), ExtResource("2_bu0v6")]
+enemies = [ExtResource("2_tpqfq"), ExtResource("2_bu0v6"), ExtResource("4_4x0k8")]
 enemy = ExtResource("2_tpqfq")
 
 [node name="Background" type="TextureRect" parent="."]
