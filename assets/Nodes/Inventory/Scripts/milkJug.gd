@@ -4,7 +4,7 @@ var player_in_area = false
 
 @export var item: inventoryItem
 
-var buger = preload("res://assets/Nodes/Inventory/godotItems/tuna.tres")
+var buger = preload("res://assets/Nodes/Inventory/godotItems/milkJug.tres")
 
 var player = null
 
@@ -20,7 +20,7 @@ func _process(_delta):
 			player.collect(item)
 			$AnimationPlayer.play("fade")
 			$AudioStreamPlayer2D.play()
-			print("+1 Tuna")
+			print("+1 Milk Jug")
 			queue_free()
 			
 
