@@ -6,7 +6,7 @@ var player_state
 
 @export var inv: inventory
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if direction.x == 0 and direction.y == 0:
@@ -40,3 +40,9 @@ func play_anim(dir):
 			$AnimatedSprite2D.play("sw_walk")
 		if dir.x < -0.5 and dir.y < -0.5:
 			$AnimatedSprite2D.play("nw_walk")		
+
+func collect(item):
+	inv.insert(item)
+	
+func player():
+	pass

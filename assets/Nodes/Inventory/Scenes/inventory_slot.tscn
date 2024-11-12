@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://o6uac5a0hvfv"]
 
 [ext_resource type="Texture2D" uid="uid://c0orq5qehfm1p" path="res://assets/Nodes/Inventory/inventoryUIpng/panel.png" id="1_dlura"]
-[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scenes/inventory_slot.gd" id="1_pu61f"]
+[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scripts/inventory_slot.gd" id="1_pu61f"]
 
 [node name="inventorySlot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -23,4 +23,14 @@ offset_bottom = 16.0
 layout_mode = 2
 
 [node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
-position = Vector2(-20, -20)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+visible = false
+custom_minimum_size = Vector2(19, 23)
+layout_mode = 0
+offset_right = 19.0
+offset_bottom = 23.0
+scale = Vector2(0.2, 0.2)
+text = "99"
+horizontal_alignment = 2
