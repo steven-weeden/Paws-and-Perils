@@ -12,5 +12,5 @@ z_index = 1
 position = Vector2(962, 538)
 
 [node name="NewAlleyIntro" parent="." instance=ExtResource("3_2rc1p")]
-position = Vector2(961, 534)
+position = Vector2(2593, 581)
 scale = Vector2(5, 5)
