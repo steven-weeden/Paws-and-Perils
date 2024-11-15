@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b41nj411bgfcu"]
+[gd_scene load_steps=14 format=3 uid="uid://b41nj411bgfcu"]
 
 [ext_resource type="Script" path="res://assets/Nodes/TutorialGuy/tutorial_guy.gd" id="1_d8l41"]
 [ext_resource type="Texture2D" uid="uid://btq33uc47xiu8" path="res://assets/Sprites/characterSprites/Goober.png" id="1_ibuqw"]
-[ext_resource type="Script" path="res://assets/Nodes/TutorialGuy/chat_detection_area.gd" id="3_lmy1o"]
 [ext_resource type="PackedScene" uid="uid://b6m2w4knbbajx" path="res://assets/Nodes/Dialogue/dialog.tscn" id="3_nv5ax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1xcs"]
@@ -81,8 +80,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ymxih"]
 radius = 9.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r873f"]
-size = Vector2(36, 29)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jl70i"]
+radius = 26.0
 
 [node name="tutorialGuy" type="CharacterBody2D"]
 script = ExtResource("1_d8l41")
@@ -95,15 +94,14 @@ animation = &"idle"
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_ymxih")
 
-[node name="chat_detection_area" type="Area2D" parent="."]
-script = ExtResource("3_lmy1o")
+[node name="chatDetection" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_r873f")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chatDetection"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_jl70i")
 
 [node name="Dialog" parent="." instance=ExtResource("3_nv5ax")]
 
-[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
-[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="body_entered" from="chatDetection" to="." method="_on_chat_detection_body_entered"]
+[connection signal="body_exited" from="chatDetection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="dialogFinished" from="Dialog" to="." method="_on_dialog_dialog_finished"]
