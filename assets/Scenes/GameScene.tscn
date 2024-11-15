@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://iitjqkjxstfu"]
+[gd_scene load_steps=4 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_2rc1p"]
+[ext_resource type="PackedScene" uid="uid://b41nj411bgfcu" path="res://assets/Nodes/TutorialGuy/tutorial_guy.tscn" id="3_xviv1"]
 
 [node name="World" type="Node2D"]
 z_index = 22
@@ -14,3 +15,8 @@ position = Vector2(962, 538)
 [node name="NewAlleyIntro" parent="." instance=ExtResource("3_2rc1p")]
 position = Vector2(2593, 581)
 scale = Vector2(5, 5)
+
+[node name="tutorialGuy" parent="." instance=ExtResource("3_xviv1")]
+z_index = 1
+position = Vector2(2656, 259)
+scale = Vector2(3, 3)
