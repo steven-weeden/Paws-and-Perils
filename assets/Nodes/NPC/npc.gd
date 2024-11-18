@@ -24,6 +24,10 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.play("walkWest")
 		if dir.x == 1:
 			$AnimatedSprite2D.play("walkEast")
+		if dir.y == -1:
+			$AnimatedSprite2D.play("walkSouth")
+		if dir.y == 1:
+			$AnimatedSprite2D.play("walkNorth")
 	if isRoaming:
 		match currentState:
 			IDLE:
