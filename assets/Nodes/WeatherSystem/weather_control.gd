@@ -1,32 +1,38 @@
-extends StaticBody2D
+extends Node2D
 
-var currentWeather = "rain"
-
+var currentWeather = "none"
+var playerInArea = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if currentWeather == "none":
-		$rain.visible = false
-		$rainColor.visible = false
-	if currentWeather == "rain":
+	if playerInArea:
+		currentWeather == "rain"
+		#$AnimationPlayer.play("fadeRain")
 		$rain.visible = true
-		$rainColor.visible = true	
-
-
-func _on_timer_timeout() -> void:
-	if currentWeather == "none":
-		currentWeather = "rain"
-		$Timer.wait_time = randf_range(10.0,30.0)
-		$Timer.start()
-	elif currentWeather == "rain":
-		currentWeather = "none"
-		$Timer.wait_time = randf_range(20.0,60.0)
-		$Timer.start()
+		$rainColor.visible = true
+	else:
+		currentWeather == "none"
+		#$AnimationPlayer.play("fadeSun")
+		$rain.visible = false
+		$rainColor.visible = false	
 		
 func _process(delta: float) -> void:
-	if currentWeather == "none":
-		$rain.visible = false
-		$rainColor.visible = false
-	if currentWeather == "rain":
+	if playerInArea:
+		currentWeather == "rain"
+		#$AnimationPlayer.play("fadeRain")
 		$rain.visible = true
-		$rainColor.visible = true	
+		$rainColor.visible = true
+	else:
+		currentWeather == "none"
+		#$AnimationPlayer.play("fadeSun")
+		$rain.visible = false
+		$rainColor.visible = false		
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		playerInArea = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	playerInArea = false

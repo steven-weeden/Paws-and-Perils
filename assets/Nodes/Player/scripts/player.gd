@@ -4,8 +4,13 @@ var speed = 150
 
 var player_state 
 
+var toggleLight = false
+
 @export var inv: inventory
 
+func _ready() -> void:
+	$PointLight2D.visible = false
+	
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
@@ -17,6 +22,14 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 	play_anim(direction)
+	
+	if Input.is_action_just_pressed("light"):
+		if not toggleLight:
+			$PointLight2D.visible = true
+			toggleLight = true
+		else:
+			$PointLight2D.visible = false
+			toggleLight = false
 	
 func play_anim(dir):
 	

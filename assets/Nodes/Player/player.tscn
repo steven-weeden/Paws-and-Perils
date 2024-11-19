@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
 [ext_resource type="PackedScene" uid="uid://ctsx5fg1n56vn" path="res://assets/Nodes/Background/parallex_background.tscn" id="2_ge1t3"]
-[ext_resource type="PackedScene" uid="uid://cw45vfupx3l8d" path="res://assets/Nodes/WeatherSystem/weather_control.tscn" id="3_cuibc"]
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
+[ext_resource type="PackedScene" uid="uid://b0vciqp83ms74" path="res://assets/Nodes/NPC/point_light_2d.tscn" id="5_urjgp"]
 
 [sub_resource type="Resource" id="Resource_aenet"]
 
@@ -240,9 +240,6 @@ shape = SubResource("RectangleShape2D_1rqt4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="weatherControl" parent="Camera2D" instance=ExtResource("3_cuibc")]
-position = Vector2(-959, -544)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("4_rcyyu")]
@@ -262,3 +259,7 @@ size_flags_vertical = 4
 
 [node name="ParallexBackground" parent="CanvasLayer" instance=ExtResource("2_ge1t3")]
 z_index = -22
+
+[node name="PointLight2D" parent="." instance=ExtResource("5_urjgp")]
+position = Vector2(-3.57628e-07, -27)
+scale = Vector2(4.0675, 3.51813)
