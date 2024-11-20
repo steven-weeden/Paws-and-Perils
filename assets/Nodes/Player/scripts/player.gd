@@ -8,8 +8,34 @@ var toggleLight = false
 
 @export var inv: inventory
 
+var savePath = "res://assets/Nodes/Save/"
+var saveName = "PlayerSave.tres"
+var playerData = PlayerData.new()
+
 func _ready() -> void:
 	$PointLight2D.visible = false
+	verifySave(savePath)
+
+func verifySave(path: String):
+	DirAccess.make_dir_absolute(path)
+
+func loadData():
+	if(ResourceLoader.exists(savePath + saveName)):
+		playerData = ResourceLoader.load(savePath + saveName)
+	playerData = ResourceLoader.load(savePath + saveName).duplicate(true)
+	on_start_load()
+	print("loaded")
+
+func saveData():
+	ResourceSaver.save(playerData, savePath + saveName)
+	print("saved")
+	
+func on_start_load():
+	self.position = playerData.savePos
+
+func _process(delta: float):
+	playerData.updatePos(self.position)
+	
 	
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -56,3 +82,9 @@ func play_anim(dir):
 
 func player():
 	pass
+
+func _on_pause_menu_load() -> void:
+	loadData()
+
+func _on_pause_menu_save() -> void:
+	saveData()

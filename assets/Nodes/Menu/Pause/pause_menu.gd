@@ -1,8 +1,12 @@
 extends Control
 
+signal save
+signal load
+
 func _ready() -> void:
 	get_tree().paused = false
 	$Panel.visible = false
+	var position = $pos
 	
 func resume():
 	get_tree().paused = false
@@ -23,14 +27,11 @@ func escape():
 func _on_resume_pressed() -> void:
 	resume()
 
-
 func _on_save_pressed() -> void:
-	pass # Replace with function body.
-
+	emit_signal("save")
 
 func _on_load_pressed() -> void:
-	pass # Replace with function body.
-
+	emit_signal("load")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

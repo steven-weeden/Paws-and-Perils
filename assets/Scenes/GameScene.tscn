@@ -30,10 +30,13 @@ position = Vector2(2870, -513)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
-z_index = 1
-position = Vector2(-1631, -1907)
-scale = Vector2(1.6875, 1.73725)
+z_index = 2
+position = Vector2(-2759, -2776)
+scale = Vector2(2.11717, 2.06747)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_l41qg")]
+
+[connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
+[connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]

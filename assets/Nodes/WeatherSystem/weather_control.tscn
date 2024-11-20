@@ -146,10 +146,10 @@ one_shot = true
 autostart = true
 
 [node name="rain" type="CPUParticles2D" parent="."]
-position = Vector2(905, 0)
-amount = 300
+position = Vector2(943, 10)
+amount = 600
 lifetime = 3.0
-speed_scale = 0.8
+speed_scale = 1.2
 randomness = 1.0
 texture = ExtResource("2_ywgck")
 emission_shape = 3
