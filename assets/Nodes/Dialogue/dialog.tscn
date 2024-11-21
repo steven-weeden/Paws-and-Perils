@@ -40,3 +40,4 @@ offset_right = 236.0
 offset_bottom = 123.0
 scale = Vector2(0.2, 0.2)
 text = "Chatting...."
+tab_size = 8

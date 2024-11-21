@@ -42,7 +42,7 @@ scale = Vector2(2.11717, 2.06747)
 [node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
 z_index = 1
 position = Vector2(2418, 537)
-scale = Vector2(10, 10)
+scale = Vector2(7.48, 7.48)
 
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
