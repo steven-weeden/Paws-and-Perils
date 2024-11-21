@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
+class_name player
+
 @export var health = 40
+
+@export var current_health = 20
 
 @export var strength = 1
 
@@ -8,7 +12,7 @@ extends CharacterBody2D
 
 @export var defense = 1
 
-@export var crit_dmg = 1
+@export var crit_dmg = 1.0
 
 @export var inv: inventory
 

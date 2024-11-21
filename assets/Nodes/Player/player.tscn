@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=36 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
@@ -6,6 +6,9 @@
 [ext_resource type="Resource" uid="uid://b7hyeyd05iw0e" path="res://assets/Nodes/Inventory/godotItems/playerInventory.tres" id="2_xwuex"]
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
 [ext_resource type="PackedScene" uid="uid://l5ipd4t7pwgl" path="res://assets/Nodes/Inventory/Scenes/skill_UI.tscn" id="6_xhcxm"]
+[ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar.gd" id="7_36hl3"]
+[ext_resource type="Texture2D" uid="uid://byeujqbqmpeal" path="res://assets/Sprites/characterSprites/healthbarProgress.png" id="8_4sfst"]
+[ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar_texture.gd" id="9_jhpky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct8fr"]
 atlas = ExtResource("1_3k1jf")
@@ -257,6 +260,84 @@ size_flags_vertical = 4
 z_index = -22
 
 [node name="SkillUi" parent="CanvasLayer" instance=ExtResource("6_xhcxm")]
+z_index = 22
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.388
+anchor_right = 0.11
+anchor_bottom = 0.69
+grow_horizontal = 1
+scale = Vector2(2, 2)
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player_h_bar")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -48.0
+offset_right = -14.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+show_percentage = false
+script = ExtResource("7_36hl3")
+player_h_bar = NodePath("../..")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ProgressBar"]
+visible = false
+layout_mode = 0
+offset_right = 314.0
+offset_bottom = 38.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ProgressBar/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "40"
+
+[node name="Label2" type="Label" parent="CanvasLayer/ProgressBar/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "/ 40"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player_h_bar")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -48.0
+offset_right = -14.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_progress = ExtResource("8_4sfst")
+tint_progress = Color(0.672305, 1.76881e-06, 6.257e-07, 1)
+script = ExtResource("9_jhpky")
+player_h_bar = NodePath("../..")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TextureProgressBar"]
+offset_top = -2.0
+offset_right = 314.0
+offset_bottom = 36.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureProgressBar/HBoxContainer"]
+layout_mode = 2
+text = "40"
+
+[node name="Label2" type="Label" parent="CanvasLayer/TextureProgressBar/HBoxContainer"]
+layout_mode = 2
+text = "/ 40"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

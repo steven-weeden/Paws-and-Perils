@@ -24,38 +24,24 @@ max_length = 11
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 
-[node name="Button" type="Button" parent="BoxContainer/health"]
-layout_mode = 2
-offset_left = 151.0
-offset_top = -1.0
-offset_right = 169.0
-offset_bottom = 30.0
-text = "+"
-
 [node name="Label" type="Label" parent="BoxContainer/health"]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 3.0
-offset_right = 157.0
-offset_bottom = 26.0
-text = "40"
+offset_left = 141.0
+offset_top = 4.0
+offset_right = 181.0
+offset_bottom = 27.0
+text = "10"
 horizontal_alignment = 1
 
 [node name="strength" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Strength"
 
-[node name="Button" type="Button" parent="BoxContainer/strength"]
-offset_left = 151.0
-offset_top = -1.0
-offset_right = 169.0
-offset_bottom = 30.0
-text = "+"
-
 [node name="Label" type="Label" parent="BoxContainer/strength"]
-offset_left = 117.0
+layout_mode = 0
+offset_left = 141.0
 offset_top = 3.0
-offset_right = 157.0
+offset_right = 181.0
 offset_bottom = 26.0
 text = "1"
 horizontal_alignment = 1
@@ -64,18 +50,12 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Agility"
 
-[node name="Button" type="Button" parent="BoxContainer/agility"]
-offset_left = 151.0
-offset_top = -1.0
-offset_right = 169.0
-offset_bottom = 30.0
-text = "+"
-
 [node name="Label" type="Label" parent="BoxContainer/agility"]
-offset_left = 117.0
-offset_top = 3.0
-offset_right = 157.0
-offset_bottom = 26.0
+layout_mode = 0
+offset_left = 141.0
+offset_top = 2.0
+offset_right = 181.0
+offset_bottom = 25.0
 text = "1"
 horizontal_alignment = 1
 
@@ -83,18 +63,12 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Defense"
 
-[node name="Button" type="Button" parent="BoxContainer/defense"]
-offset_left = 151.0
-offset_top = -1.0
-offset_right = 169.0
-offset_bottom = 30.0
-text = "+"
-
 [node name="Label" type="Label" parent="BoxContainer/defense"]
-offset_left = 117.0
-offset_top = 3.0
-offset_right = 157.0
-offset_bottom = 26.0
+layout_mode = 0
+offset_left = 141.0
+offset_top = 2.0
+offset_right = 181.0
+offset_bottom = 25.0
 text = "1"
 horizontal_alignment = 1
 
@@ -103,17 +77,11 @@ layout_mode = 2
 text = "Crit Damage"
 max_length = 11
 
-[node name="Button" type="Button" parent="BoxContainer/crit_dmg"]
-offset_left = 151.0
-offset_top = -1.0
-offset_right = 169.0
-offset_bottom = 30.0
-text = "+"
-
 [node name="Label" type="Label" parent="BoxContainer/crit_dmg"]
-offset_left = 117.0
-offset_top = 3.0
-offset_right = 157.0
-offset_bottom = 26.0
+layout_mode = 0
+offset_left = 139.0
+offset_top = 2.0
+offset_right = 179.0
+offset_bottom = 25.0
 text = "1.0"
 horizontal_alignment = 1
