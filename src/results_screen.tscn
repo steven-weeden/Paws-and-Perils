@@ -28,7 +28,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:flip_h")
+tracks/0/path = NodePath("player_cat:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +40,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player:position")
+tracks/1/path = NodePath("player_cat:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -56,7 +56,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:flip_h")
+tracks/0/path = NodePath("player_cat:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,7 +68,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player:position")
+tracks/1/path = NodePath("player_cat:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -113,7 +113,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_8xgli")
 
-[node name="Player" type="TextureRect" parent="."]
+[node name="player_cat" type="TextureRect" parent="."]
 top_level = true
 layout_mode = 2
 offset_top = 174.0
@@ -193,7 +193,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_182wv")
 value = 25.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="VBoxContainer/ProgressBar"]
+[node name="level_label" type="Label" parent="VBoxContainer/ProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -86,8 +86,9 @@ func enemy_turn():
 			
 			
 			
-			await get_tree().create_timer(0.25).timeout
-			get_tree().quit()
+			await show_death_screen()
+			return
+	
 
 func _on_run_pressed() -> void:
 	$click_sound.play()
@@ -152,8 +153,24 @@ func show_results_screen():
 	results_screen.get_node("Continue").connect("pressed", Callable(self, "_on_continue_pressed"))
 	results_screen.show_screen()
 
-
+func show_death_screen():
+	var death_scene = preload("res://src/death_screen.tscn")
+	var death_screen = death_scene.instantiate()
 	
+	
+	
+	
+	
+	get_tree().current_scene.add_child(death_screen)
+	
+	$ActionsPanel.hide()
+	$PlayerPanel.hide()
+	$EnemyContainer.hide()
+	
+	death_screen.get_node("actions_panel/Continue").connect("pressed", Callable(self, "_on_continue_pressed"))
+	death_screen.get_node("actions_panel/load_game").connect("pressed", Callable(self, "_on_load_game_pressed"))
+	
+	death_screen.show_screen()
 
 func _on_defend_pressed() -> void:
 	$click_sound.play()

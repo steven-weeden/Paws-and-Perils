@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ils5jgncrr2o"]
+[gd_scene load_steps=7 format=3 uid="uid://ils5jgncrr2o"]
 
 [ext_resource type="Texture2D" uid="uid://bo1r00hcexd61" path="res://assets/environmentalSprites/DeathScreen/light_shine.jpg" id="1_w4v3g"]
+[ext_resource type="Script" path="res://src/death_screen.gd" id="1_w27gv"]
 [ext_resource type="Texture2D" uid="uid://bekudmysv361b" path="res://assets/environmentalSprites/VictoryScreen/279c04744561021-2.png" id="2_qlow7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyhje"]
@@ -23,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_w27gv")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_w4v3g")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="player_cat" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -49,7 +51,7 @@ grow_vertical = 0
 texture = ExtResource("2_qlow7")
 flip_v = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Is it Meowver?" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -64,7 +66,7 @@ text = "Is it Meowver?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ActionsPanel" type="Panel" parent="."]
+[node name="actions_panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -74,7 +76,7 @@ offset_top = -98.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Continue" type="Button" parent="ActionsPanel"]
+[node name="Continue" type="Button" parent="actions_panel"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -91,7 +93,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_b64yp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8g7nk")
 text = "Load last Checkpoint"
 
-[node name="Load_Game" type="Button" parent="ActionsPanel"]
+[node name="load_game" type="Button" parent="actions_panel"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -110,3 +112,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lyhje")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b64yp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8g7nk")
 text = "Load Game"
+
+[connection signal="pressed" from="actions_panel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="actions_panel/load_game" to="." method="_on_load_game_pressed"]
