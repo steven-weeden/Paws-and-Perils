@@ -1,10 +1,20 @@
 extends CharacterBody2D
 
+@export var health = 40
+
+@export var strength = 1
+
+@export var agility = 1
+
+@export var defense = 1
+
+@export var crit_dmg = 1
+
+@export var inv: inventory
+
 var speed = 150
 
 var player_state 
-
-@export var inv: inventory
 
 func _physics_process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")

@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://l5ipd4t7pwgl"]
+
+[ext_resource type="Script" path="res://assets/Nodes/SkillUI/Scripts/box_container.gd" id="1_wwfxx"]
+
+[node name="SkillUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_right = 177.0
+offset_bottom = 171.0
+vertical = true
+script = ExtResource("1_wwfxx")
+
+[node name="health" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+text = "Health"
+max_length = 11
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+
+[node name="Button" type="Button" parent="BoxContainer/health"]
+layout_mode = 2
+offset_left = 151.0
+offset_top = -1.0
+offset_right = 169.0
+offset_bottom = 30.0
+text = "+"
+
+[node name="Label" type="Label" parent="BoxContainer/health"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 157.0
+offset_bottom = 26.0
+text = "40"
+horizontal_alignment = 1
+
+[node name="strength" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+text = "Strength"
+
+[node name="Button" type="Button" parent="BoxContainer/strength"]
+offset_left = 151.0
+offset_top = -1.0
+offset_right = 169.0
+offset_bottom = 30.0
+text = "+"
+
+[node name="Label" type="Label" parent="BoxContainer/strength"]
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 157.0
+offset_bottom = 26.0
+text = "1"
+horizontal_alignment = 1
+
+[node name="agility" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+text = "Agility"
+
+[node name="Button" type="Button" parent="BoxContainer/agility"]
+offset_left = 151.0
+offset_top = -1.0
+offset_right = 169.0
+offset_bottom = 30.0
+text = "+"
+
+[node name="Label" type="Label" parent="BoxContainer/agility"]
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 157.0
+offset_bottom = 26.0
+text = "1"
+horizontal_alignment = 1
+
+[node name="defense" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+text = "Defense"
+
+[node name="Button" type="Button" parent="BoxContainer/defense"]
+offset_left = 151.0
+offset_top = -1.0
+offset_right = 169.0
+offset_bottom = 30.0
+text = "+"
+
+[node name="Label" type="Label" parent="BoxContainer/defense"]
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 157.0
+offset_bottom = 26.0
+text = "1"
+horizontal_alignment = 1
+
+[node name="crit_dmg" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+text = "Crit Damage"
+max_length = 11
+
+[node name="Button" type="Button" parent="BoxContainer/crit_dmg"]
+offset_left = 151.0
+offset_top = -1.0
+offset_right = 169.0
+offset_bottom = 30.0
+text = "+"
+
+[node name="Label" type="Label" parent="BoxContainer/crit_dmg"]
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 157.0
+offset_bottom = 26.0
+text = "1.0"
+horizontal_alignment = 1

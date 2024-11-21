@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=33 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
 [ext_resource type="PackedScene" uid="uid://ctsx5fg1n56vn" path="res://assets/Nodes/Background/parallex_background.tscn" id="2_ge1t3"]
 [ext_resource type="Resource" uid="uid://b7hyeyd05iw0e" path="res://assets/Nodes/Inventory/godotItems/playerInventory.tres" id="2_xwuex"]
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
+[ext_resource type="PackedScene" uid="uid://l5ipd4t7pwgl" path="res://assets/Nodes/Inventory/Scenes/skill_UI.tscn" id="6_xhcxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct8fr"]
 atlas = ExtResource("1_3k1jf")
@@ -254,6 +255,8 @@ size_flags_vertical = 4
 
 [node name="ParallexBackground" parent="CanvasLayer" instance=ExtResource("2_ge1t3")]
 z_index = -22
+
+[node name="SkillUi" parent="CanvasLayer" instance=ExtResource("6_xhcxm")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
