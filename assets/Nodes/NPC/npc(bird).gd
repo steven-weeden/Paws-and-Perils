@@ -18,22 +18,18 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if currentState == 0 or currentState == 1:
-		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D.play("idle")
 	elif currentState == 2:
 		if dir.x == -1:
-			$AnimatedSprite2D.play("walkWest")
+			$AnimatedSprite2D.play("fly(left)")
 		if dir.x == 1:
-			$AnimatedSprite2D.play("walkEast")
-		if dir.y == -1:
-			$AnimatedSprite2D.play("walkNorth")
-		if dir.y == 1:
-			$AnimatedSprite2D.play("walkSouth")
+			$AnimatedSprite2D.play("fly(right)")
 	if isRoaming:
 		match currentState:
 			IDLE:
 				pass
 			NEW_DIR:
-				dir = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN])
+				dir = choose([Vector2.RIGHT, Vector2.LEFT])
 			MOVE:
 				move(delta)
 			

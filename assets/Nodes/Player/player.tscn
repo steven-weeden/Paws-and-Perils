@@ -261,5 +261,5 @@ size_flags_vertical = 4
 z_index = -22
 
 [node name="PointLight2D" parent="." instance=ExtResource("5_urjgp")]
-position = Vector2(-3.57628e-07, -27)
-scale = Vector2(4.0675, 3.51813)
+position = Vector2(3.8147e-06, -13)
+scale = Vector2(4.6275, 3.86844)

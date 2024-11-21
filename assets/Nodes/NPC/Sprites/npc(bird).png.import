@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbxjlr7i3tjv1"
-path="res://.godot/imported/birdnobg.png-32f5d9a5ceecaa70d909a565d4feff0f.ctex"
+uid="uid://g10k7ioqvxen"
+path="res://.godot/imported/npc(bird).png-0ef467c314c21a83ee78c81e1b45ff4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Nodes/NPC/Sprites/birdnobg.png"
-dest_files=["res://.godot/imported/birdnobg.png-32f5d9a5ceecaa70d909a565d4feff0f.ctex"]
+source_file="res://assets/Nodes/NPC/Sprites/npc(bird).png"
+dest_files=["res://.godot/imported/npc(bird).png-0ef467c314c21a83ee78c81e1b45ff4e.ctex"]
 
 [params]
 

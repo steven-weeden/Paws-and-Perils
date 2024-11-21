@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://iitjqkjxstfu"]
+[gd_scene load_steps=8 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_2rc1p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b451xioc6dgje" path="res://assets/Nodes/NPC/npc.tscn" id="4_uptrf"]
 [ext_resource type="PackedScene" uid="uid://cw45vfupx3l8d" path="res://assets/Nodes/WeatherSystem/weather_control.tscn" id="5_0j2t6"]
 [ext_resource type="PackedScene" uid="uid://bnhp2ledt8yb7" path="res://assets/Nodes/Menu/Pause/pause_menu.tscn" id="6_l41qg"]
+[ext_resource type="PackedScene" uid="uid://1d2cnxjtrppa" path="res://assets/Nodes/NPC/npc(bird).tscn" id="7_dblty"]
 
 [node name="World" type="Node2D"]
 z_index = 22
@@ -37,6 +38,11 @@ scale = Vector2(2.11717, 2.06747)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_l41qg")]
+
+[node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
+z_index = 1
+position = Vector2(2418, 537)
+scale = Vector2(10, 10)
 
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
