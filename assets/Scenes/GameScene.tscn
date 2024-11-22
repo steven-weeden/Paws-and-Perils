@@ -22,12 +22,12 @@ scale = Vector2(5, 5)
 
 [node name="tutorialGuy" parent="." instance=ExtResource("3_xviv1")]
 z_index = 1
-position = Vector2(2656, 259)
+position = Vector2(1525, 267)
 scale = Vector2(3, 3)
 
 [node name="npc" parent="." instance=ExtResource("4_uptrf")]
 z_index = 1
-position = Vector2(2870, -513)
+position = Vector2(1865, -329)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
@@ -41,7 +41,7 @@ scale = Vector2(2.11717, 2.06747)
 
 [node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
 z_index = 1
-position = Vector2(2418, 537)
+position = Vector2(1934, 608)
 scale = Vector2(7.48, 7.48)
 
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
