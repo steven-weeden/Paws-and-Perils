@@ -148,9 +148,9 @@ autostart = true
 
 [node name="rain" type="CPUParticles2D" parent="."]
 position = Vector2(943, 10)
-amount = 600
-lifetime = 3.0
-speed_scale = 1.2
+amount = 1000
+lifetime = 5.0
+speed_scale = 1.5
 randomness = 1.0
 texture = ExtResource("2_ywgck")
 emission_shape = 3
