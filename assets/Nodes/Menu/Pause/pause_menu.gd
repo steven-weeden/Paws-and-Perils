@@ -6,7 +6,6 @@ signal load
 func _ready() -> void:
 	get_tree().paused = false
 	$Panel.visible = false
-	var position = $pos
 	
 func resume():
 	get_tree().paused = false

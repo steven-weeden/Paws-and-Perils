@@ -9,6 +9,7 @@ shader_parameter/lod = 0.0
 
 [sub_resource type="SystemFont" id="SystemFont_tpreh"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_lpwgk"]
 font_size = 25
@@ -17,15 +18,19 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_deplg"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_y4twp"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_5cnhr"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_fmao1"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="Animation" id="Animation_rxwae"]
 length = 0.001
@@ -95,15 +100,9 @@ scale = Vector2(0.569316, 0.542741)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.5
-offset_top = -81.5
-offset_right = 38.5
-offset_bottom = 81.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
