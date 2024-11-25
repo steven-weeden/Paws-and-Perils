@@ -34,7 +34,7 @@ scale = Vector2(5, 5)
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
 z_index = 2
 position = Vector2(-3330, -4698)
-scale = Vector2(2.58931, 3.85198)
+scale = Vector2(3.14942, 3.88694)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
