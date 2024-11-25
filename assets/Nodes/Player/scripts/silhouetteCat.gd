@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@onready var _silhouette_sprite: AnimatedSprite2D = $SilhouetteSprite2D
+@onready var _silhouette_sprite: AnimatedSprite2D = $SilhouetteSprite
 
 func _ready() -> void:
 	# Ensure silhouette sprite uses the same SpriteFrames resource

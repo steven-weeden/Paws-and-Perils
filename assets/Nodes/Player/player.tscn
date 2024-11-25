@@ -1,9 +1,10 @@
 [gd_scene load_steps=35 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
-[ext_resource type="Shader" path="res://assets/Nodes/Player/shader/silhouetteShader.gdshader" id="1_4kjem"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
 [ext_resource type="PackedScene" uid="uid://ctsx5fg1n56vn" path="res://assets/Nodes/Background/parallex_background.tscn" id="2_ge1t3"]
+[ext_resource type="Shader" path="res://assets/Nodes/Player/shader/silhouetteShader.gdshader" id="3_i78pv"]
+[ext_resource type="Script" path="res://assets/Nodes/Player/scripts/silhouetteCat.gd" id="4_kxegi"]
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
 [ext_resource type="PackedScene" uid="uid://b0vciqp83ms74" path="res://assets/Nodes/NPC/point_light_2d.tscn" id="5_urjgp"]
 
@@ -218,14 +219,12 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rqt4"]
-size = Vector2(21.3333, 5.66667)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tv0g"]
-shader = ExtResource("1_4kjem")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxfqs"]
+shader = ExtResource("3_i78pv")
 shader_parameter/silhouette_color = Color(0, 0, 0, 0.5)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6eio0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rqt4"]
+size = Vector2(21.3333, 5.66667)
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -235,6 +234,14 @@ inv = SubResource("Resource_aenet")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 12)
 scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_0htd3")
+animation = &"e_walk"
+offset = Vector2(0, -15)
+script = ExtResource("4_kxegi")
+
+[node name="SilhouetteSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+z_index = 100
+material = SubResource("ShaderMaterial_xxfqs")
 sprite_frames = SubResource("SpriteFrames_0htd3")
 animation = &"e_walk"
 offset = Vector2(0, -15)
@@ -270,7 +277,3 @@ z_index = -22
 [node name="PointLight2D" parent="." instance=ExtResource("5_urjgp")]
 position = Vector2(3.8147e-06, -13)
 scale = Vector2(4.6275, 3.86844)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_2tv0g")
-sprite_frames = SubResource("SpriteFrames_6eio0")
