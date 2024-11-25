@@ -2,6 +2,8 @@ extends Control
 
 signal save
 signal load
+@onready var options_menu: OptionsMenu = $Panel/VBoxContainer/Options/options_menu
+@onready var pause_menu: Control = $"."
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -34,6 +36,6 @@ func _on_load_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-
+	
 func _process(delta: float) -> void:
 	escape()

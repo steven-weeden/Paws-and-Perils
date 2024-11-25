@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://2jiggs2ua1sj"]
+[gd_scene load_steps=8 format=3 uid="uid://2jiggs2ua1sj"]
 
 [ext_resource type="Script" path="res://assets/Nodes/Title/title_screen.gd" id="1_cgbp4"]
 [ext_resource type="Texture2D" uid="uid://b8wc81wafw12d" path="res://assets/Nodes/Title/pawsbg.jpg" id="1_neklg"]
 [ext_resource type="PackedScene" uid="uid://b3gbxb2hqyfcq" path="res://assets/Nodes/Title/options_menu.tscn" id="3_wuuwf"]
+[ext_resource type="AudioStream" uid="uid://u3ykxg4crj3m" path="res://assets/Nodes/Sounds/assets/music/Temple_of_light.mp3" id="4_yunup"]
 
 [sub_resource type="SystemFont" id="SystemFont_xbrwa"]
 font_names = PackedStringArray("Impact")
@@ -68,6 +69,12 @@ text = "QUIT"
 [node name="options_menu" parent="." instance=ExtResource("3_wuuwf")]
 visible = false
 layout_mode = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yunup")
+volume_db = -14.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
