@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://iitjqkjxstfu"]
+[gd_scene load_steps=9 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_2rc1p"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cw45vfupx3l8d" path="res://assets/Nodes/WeatherSystem/weather_control.tscn" id="5_0j2t6"]
 [ext_resource type="PackedScene" uid="uid://bnhp2ledt8yb7" path="res://assets/Nodes/Menu/Pause/pause_menu.tscn" id="6_l41qg"]
 [ext_resource type="PackedScene" uid="uid://1d2cnxjtrppa" path="res://assets/Nodes/NPC/npc(bird).tscn" id="7_dblty"]
+[ext_resource type="PackedScene" uid="uid://cx666y67r5sbs" path="res://assets/Nodes/NPC/npc_2.tscn" id="8_yqmt7"]
 
 [node name="World" type="Node2D"]
 z_index = 22
@@ -31,6 +32,7 @@ position = Vector2(1865, -329)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
+visible = false
 z_index = 2
 position = Vector2(-2759, -2776)
 scale = Vector2(2.11717, 2.06747)
@@ -43,6 +45,11 @@ scale = Vector2(2.11717, 2.06747)
 z_index = 1
 position = Vector2(1934, 608)
 scale = Vector2(7.48, 7.48)
+
+[node name="npc2" parent="." instance=ExtResource("8_yqmt7")]
+z_index = 1
+position = Vector2(1473, 409)
+scale = Vector2(3, 3)
 
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
