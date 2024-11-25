@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnhp2ledt8yb7"]
+[gd_scene load_steps=13 format=3 uid="uid://bnhp2ledt8yb7"]
 
 [ext_resource type="Script" path="res://assets/Nodes/Menu/Pause/pause_menu.gd" id="1_4mtrb"]
 [ext_resource type="Shader" path="res://assets/Nodes/Menu/Pause/pause_menu.gdshader" id="2_62qs8"]
@@ -7,10 +7,25 @@
 shader = ExtResource("2_62qs8")
 shader_parameter/lod = 0.0
 
+[sub_resource type="SystemFont" id="SystemFont_tpreh"]
+font_names = PackedStringArray("Impact")
+
 [sub_resource type="LabelSettings" id="LabelSettings_lpwgk"]
 font_size = 25
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_deplg"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_y4twp"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_5cnhr"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_fmao1"]
+font_names = PackedStringArray("Impact")
 
 [sub_resource type="Animation" id="Animation_rxwae"]
 length = 0.001
@@ -63,24 +78,17 @@ script = ExtResource("1_4mtrb")
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_rsw3s")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -187.0
-offset_top = -143.0
-offset_right = 187.0
-offset_bottom = 143.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.569316, 0.542741)
@@ -101,24 +109,33 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_tpreh")
 text = "= PAUSE ="
 label_settings = SubResource("LabelSettings_lpwgk")
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_deplg")
+theme_override_font_sizes/font_size = 15
 text = "RESUME"
 
 [node name="Save" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_y4twp")
+theme_override_font_sizes/font_size = 15
 text = "SAVE"
 
 [node name="Load" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_5cnhr")
+theme_override_font_sizes/font_size = 15
 text = "LOAD"
 
 [node name="Quit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_fmao1")
+theme_override_font_sizes/font_size = 15
 text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

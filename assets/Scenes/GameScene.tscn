@@ -32,7 +32,6 @@ position = Vector2(1865, -329)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
-visible = false
 z_index = 2
 position = Vector2(-2759, -2776)
 scale = Vector2(2.11717, 2.06747)
