@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://assets/Nodes/Player/scripts/playerData.gd" id="1_7kw5y"]
+
+[resource]
+script = ExtResource("1_7kw5y")
+savePos = Vector2(1180.3, 304.707)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=34 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
-[ext_resource type="PackedScene" uid="uid://b0vciqp83ms74" path="res://assets/Nodes/Player/point_light_2d.tscn" id="2_ejmjk"]
 [ext_resource type="PackedScene" uid="uid://ctsx5fg1n56vn" path="res://assets/Nodes/Background/parallex_background.tscn" id="2_ge1t3"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/silhouetteCat.gd" id="3_u1j5y"]
 [ext_resource type="Shader" path="res://assets/Nodes/Player/shader/silhouetteShader.gdshader" id="4_4pstd"]
@@ -273,7 +272,3 @@ size_flags_vertical = 4
 
 [node name="ParallexBackground" parent="CanvasLayer" instance=ExtResource("2_ge1t3")]
 z_index = -22
-
-[node name="PointLight2D" parent="." instance=ExtResource("2_ejmjk")]
-position = Vector2(0, -17)
-scale = Vector2(4, 4)

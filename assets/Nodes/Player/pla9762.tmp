@@ -231,6 +231,8 @@ y_sort_enabled = true
 script = ExtResource("1_crmlk")
 inv = SubResource("Resource_aenet")
 
+[node name="PointLight2D" parent="." instance=ExtResource("2_ejmjk")]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 12)
 scale = Vector2(3, 3)
@@ -273,7 +275,3 @@ size_flags_vertical = 4
 
 [node name="ParallexBackground" parent="CanvasLayer" instance=ExtResource("2_ge1t3")]
 z_index = -22
-
-[node name="PointLight2D" parent="." instance=ExtResource("2_ejmjk")]
-position = Vector2(0, -17)
-scale = Vector2(4, 4)
