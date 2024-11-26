@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=3 format=3 uid="uid://tliy67kd7j73"]
+
+[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scripts/Inv_slot.gd" id="2_8uecl"]
+[ext_resource type="Script" path="res://assets/Nodes/Player/scripts/playerData.gd" id="2_du75u"]
+
+[resource]
+script = ExtResource("2_du75u")
+savePos = Vector2(717.421, 355.921)
+slots = Array[ExtResource("2_8uecl")]([])

@@ -8,9 +8,13 @@ var buger = preload("res://assets/Nodes/Inventory/godotItems/bugar.tres")
 
 var player = null
 
+var picked_up = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.e
+	if picked_up == true:
+		queue_free()
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +22,7 @@ func _process(_delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("interact"):
 			player.collect(item)
+			picked_up = true
 			$AnimationPlayer.play("fade")
 			$AudioStreamPlayer2D.play()
 			print("+1 buger")

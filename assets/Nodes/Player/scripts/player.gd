@@ -22,7 +22,45 @@ var speed = 150
 
 var player_state 
 
-func _physics_process(_delta):
+var toggleLight = false
+
+var savePath = "user://saves/"
+var saveName = "PlayerSave.tres"
+var playerData = PlayerData.new()
+
+func _ready() -> void:
+	$PointLight2D.visible = false
+	verifySave(savePath)
+
+func verifySave(path: String):
+	DirAccess.make_dir_absolute(path)
+
+func loadData():
+	if(ResourceLoader.exists(savePath + saveName)):
+		playerData = ResourceLoader.load(savePath + saveName)
+	playerData = ResourceLoader.load(savePath + saveName).duplicate(true)
+	on_start_load()
+	print("loaded")
+
+func saveData():
+	ResourceSaver.save(playerData, savePath + saveName)
+	print("saved")
+	
+func on_start_load():
+	self.position = playerData.savePos
+	
+	for i in range(playerData.slots.size()):
+		if playerData.slots[i] == null:
+			playerData.slots[i] = InvSlot.new()
+
+	self.inv.slots = playerData.slots
+	self.inv.emit_signal("update")
+
+func _process(delta: float):
+	playerData.updatePos(self.position)
+	playerData.update_slots(self.inv.slots)
+	
+func _physics_process(delta): 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if direction.x == 0 and direction.y == 0:
@@ -33,6 +71,14 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	play_anim(direction)
+	
+	if Input.is_action_just_pressed("light"):
+		if not toggleLight:
+			$PointLight2D.visible = true
+			toggleLight = true
+		else:
+			$PointLight2D.visible = false
+			toggleLight = false
 	
 func play_anim(dir):
 	
@@ -62,3 +108,9 @@ func collect(item):
 	
 func player():
 	pass
+
+func _on_pause_menu_load() -> void:
+	loadData()
+
+func _on_pause_menu_save() -> void:
+	saveData()

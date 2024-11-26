@@ -51,3 +51,5 @@ position = Vector2(595, 366)
 
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
+
+[editable path="player"]
