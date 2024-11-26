@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/Nodes/WeatherSystem/weather_control.gd" id="1_d660g"]
 [ext_resource type="Texture2D" uid="uid://dpewg1oeu0tll" path="res://assets/Nodes/WeatherSystem/Sprites/rain-1.png.png" id="2_ywgck"]
-[ext_resource type="AudioStream" uid="uid://cs7vfwws2qq48" path="res://assets/Nodes/Sounds/assets/sfx/rain-sound-188158.mp3" id="3_7cait"]
+[ext_resource type="AudioStream" uid="uid://cfl1jk1gkj18i" path="res://assets/Nodes/Sounds/assets/sfx/rain-sound(looped).mp3" id="3_d78h1"]
 
 [sub_resource type="Curve" id="Curve_hd8tx"]
 _data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.758427, 0.230769), 0.0, 0.0, 0, 0, Vector2(1, 0.186813), 0.0, 0.0, 0, 0]
@@ -173,7 +173,7 @@ position = Vector2(961, 540)
 shape = SubResource("RectangleShape2D_bysx7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_7cait")
+stream = ExtResource("3_d78h1")
 volume_db = -14.0
 autoplay = true
 bus = &"Sfx"
