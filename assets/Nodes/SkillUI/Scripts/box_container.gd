@@ -5,6 +5,7 @@ extends BoxContainer
 @onready var amount_textA = $agility/Label
 @onready var amount_textD = $defense/Label
 @onready var amount_textC = $crit_dmg/Label
+@onready var amount_textL = $level/Label
 
 var is_open = false
 
@@ -15,6 +16,7 @@ var str
 var agi
 var def
 var crit_dmg
+var level
 
 func _ready() -> void:
 	close()
@@ -23,8 +25,10 @@ func _ready() -> void:
 	agi = player_stats.agility
 	def = player_stats.defense
 	crit_dmg = player_stats.crit_dmg
+	level = player_stats.level
 
 func _process(_delta):
+	amount_textL.text = str(level)
 	amount_textH.text = str(health)
 	amount_textS.text = str(str)
 	amount_textA.text = str(agi)

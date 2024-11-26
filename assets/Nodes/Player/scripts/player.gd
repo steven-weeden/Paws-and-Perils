@@ -4,7 +4,7 @@ class_name player
 
 @export var health = 40
 
-@export var current_health = 20
+@export var current_health = 40
 
 @export var strength = 1
 
@@ -13,6 +13,8 @@ class_name player
 @export var defense = 1
 
 @export var crit_dmg = 1.0
+
+@export var level = 1
 
 @export var inv: inventory
 

@@ -17,6 +17,23 @@ offset_bottom = 171.0
 vertical = true
 script = ExtResource("1_wwfxx")
 
+[node name="level" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+text = "Level"
+max_length = 11
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+
+[node name="Label" type="Label" parent="BoxContainer/level"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 4.0
+offset_right = 181.0
+offset_bottom = 27.0
+text = "1
+"
+horizontal_alignment = 1
+
 [node name="health" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Health"
