@@ -61,6 +61,7 @@ _data = {
 radius = 25.0
 
 [node name="buger" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_3ndhg")
 item = ExtResource("2_kdjay")
 

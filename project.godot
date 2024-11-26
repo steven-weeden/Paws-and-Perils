@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Paws and Perils"
-run/main_scene="res://assets/Scenes/GameScene.tscn"
+run/main_scene="res://assets/Nodes/Title/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://assets/Nodes/Global/Scripts/global.gd"
 
 [display]
 

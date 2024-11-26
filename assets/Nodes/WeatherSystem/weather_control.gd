@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var currentWeather = "none"
 var playerInArea = false
 
@@ -10,11 +12,13 @@ func _ready() -> void:
 		#$AnimationPlayer.play("fadeRain")
 		$rain.visible = true
 		$rainColor.visible = true
+		audio_stream_player.play()
 	else:
 		currentWeather == "none"
 		#$AnimationPlayer.play("fadeSun")
 		$rain.visible = false
 		$rainColor.visible = false	
+		audio_stream_player.stop()
 		
 func _process(delta: float) -> void:
 	if playerInArea:
@@ -22,11 +26,14 @@ func _process(delta: float) -> void:
 		#$AnimationPlayer.play("fadeRain")
 		$rain.visible = true
 		$rainColor.visible = true
+		if audio_stream_player.playing == false:
+			audio_stream_player.play()
 	else:
 		currentWeather == "none"
 		#$AnimationPlayer.play("fadeSun")
 		$rain.visible = false
-		$rainColor.visible = false		
+		$rainColor.visible = false
+		audio_stream_player.stop()		
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
