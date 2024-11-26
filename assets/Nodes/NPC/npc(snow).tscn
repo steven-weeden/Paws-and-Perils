@@ -1,0 +1,171 @@
+[gd_scene load_steps=20 format=3 uid="uid://chxqjf5roeseg"]
+
+[ext_resource type="Script" path="res://assets/Nodes/NPC/npc.gd" id="1_1qqqw"]
+[ext_resource type="Texture2D" uid="uid://by8pwwq6ytr4m" path="res://assets/Nodes/NPC/Sprites/snow.png" id="2_75pjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v8ed"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymhhn"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwqao"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmb0t"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(0, 896, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf8i7"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(448, 896, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbbln"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(896, 896, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03lt5"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(0, 1344, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvp7w"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(448, 1344, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ku4"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(896, 1344, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qknx2"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcf8v"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q8f2"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ct8q"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(0, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx00d"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(448, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2tbb"]
+atlas = ExtResource("2_75pjr")
+region = Rect2(896, 448, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xcp7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v8ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymhhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwqao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymhhn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmb0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf8i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbbln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf8i7")
+}],
+"loop": true,
+"name": &"walkEast",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03lt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvp7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ku4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvp7w")
+}],
+"loop": true,
+"name": &"walkNorth",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qknx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcf8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q8f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcf8v")
+}],
+"loop": true,
+"name": &"walkSouth",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ct8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx00d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2tbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx00d")
+}],
+"loop": true,
+"name": &"walkWest",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckrxd"]
+
+[node name="NPC(snow)" type="CharacterBody2D"]
+script = ExtResource("1_1qqqw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_8xcp7")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ckrxd")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
