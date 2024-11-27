@@ -58,20 +58,39 @@ func enemy_turn():
 	display_text("%s swings at you" % enemy.name)
 	await display_text_and_wait("%s swings at you" % enemy.name)
 	
+	
+	
 	if is_defending:
 		is_defending = false
 		
 		display_text("You defended successfully!")
 		await display_text_and_wait("You defended successfully!")
 	else:
-		current_player_health = max(0, current_player_health - enemy.damage)
+		
+		#Base damage calculation
+		var base_damage = max(1, enemy.damage - State.defense)  # Ensure at least 1 base damage
+		var variance = 0.2  # Example variance of ±20%
+		var min_damage = base_damage * (1.0 - variance)
+		var max_damage = base_damage * (1.0 + variance)
+		var damage = randf_range(min_damage, max_damage)
+		
+		#Critical check
+		if randf() < enemy.crit:
+			display_text("Critical hit by the enemy!")
+			await display_text("Critical hit by the enemy!")
+			damage *= 2.0
+		
+		#finalize damage
+		damage = int(round(damage))  # Convert to integer
+		
+		current_player_health = max(0, current_player_health - damage)
 		set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
 	
 		$AnimationPlayer.play("take_damage")
 		await $AnimationPlayer.animation_finished
 	
-		display_text("You took %d damage!" % enemy.damage)
-		await display_text_and_wait("You took %d damage!" % enemy.damage)
+		display_text("You took %d damage!" % damage)
+		await display_text_and_wait("You took %d damage!" % damage)
 		
 		if current_player_health == 0:
 			display_text("MEOUCH! you died!")
@@ -105,14 +124,36 @@ func _on_attack_pressed() -> void:
 	display_text("You swing your paw")
 	await display_text_and_wait("You swing your paw")
 	
-	current_enemy_health = max(0, current_enemy_health - State.damage)
+	#Dodge check
+	if randf() < (enemy.agility / (enemy.agility + State.agility)):
+		display_text("Enemy dodged!")
+		await display_text("Enemy dodged!")
+		enemy_turn()
+		return
+	
+	#Calculate damage
+	var base_damage = max(1, State.damage - enemy.defense)  #ensure non-negatve
+	var variance = .2
+	var min_damage = base_damage * (1.0 - variance)
+	var max_damage = base_damage * (1.0 + variance)
+	var damage = randf_range(min_damage, max_damage)
+	
+	#Critical hit check
+	if randf() < State.crit:
+		display_text("Critical hit!")
+		await display_text("Critical hit!")
+		damage *= 2.0
+	
+	damage = int(round(damage))
+	
+	current_enemy_health = max(0, current_enemy_health - damage)
 	set_health($EnemyContainer/ProgressBar, current_enemy_health, enemy.health)
 	
 	$AnimationPlayer.play("enemy_damaged")
 	await $AnimationPlayer.animation_finished
 	
-	display_text("You dealt %d damage!" % State.damage)
-	await display_text_and_wait("You dealt %d damage!" % State.damage)
+	display_text("You dealt %d damage!" % damage)
+	await display_text_and_wait("You dealt %d damage!" % damage)
 	
 	if current_enemy_health == 0:
 		display_text("MEOWTASTIC! You defeated %s!" % enemy.name)
@@ -181,4 +222,4 @@ func _on_defend_pressed() -> void:
 	
 	enemy_turn()
 	
-	
+# Helper functions for calculations
