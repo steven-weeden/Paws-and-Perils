@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=42 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
 [ext_resource type="PackedScene" uid="uid://b0vciqp83ms74" path="res://assets/Nodes/Player/point_light_2d.tscn" id="2_ejmjk"]
 [ext_resource type="PackedScene" uid="uid://ctsx5fg1n56vn" path="res://assets/Nodes/Background/parallex_background.tscn" id="2_ge1t3"]
 [ext_resource type="Resource" uid="uid://b7hyeyd05iw0e" path="res://assets/Nodes/Inventory/godotItems/playerInventory.tres" id="2_xwuex"]
+[ext_resource type="AudioStream" uid="uid://kp72vp2q21jb" path="res://assets/Nodes/Sounds/assets/sfx/footstep.mp3" id="3_ca2nw"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/silhouetteCat.gd" id="3_u1j5y"]
 [ext_resource type="Shader" path="res://assets/Nodes/Player/shader/silhouetteShader.gdshader" id="4_4pstd"]
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
@@ -73,13 +74,17 @@ region = Rect2(64, 3, 32, 32)
 atlas = ExtResource("1_3k1jf")
 region = Rect2(0, 3, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgvgg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_moak5"]
 atlas = ExtResource("1_3k1jf")
-region = Rect2(160, 67, 32, 32)
+region = Rect2(96, 67, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tfn74"]
 atlas = ExtResource("1_3k1jf")
 region = Rect2(128, 67, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgvgg"]
+atlas = ExtResource("1_3k1jf")
+region = Rect2(160, 67, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqhoi"]
 atlas = ExtResource("1_3k1jf")
@@ -141,7 +146,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"n_walk",
-"speed": 3.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -184,14 +189,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pgvgg")
+"texture": SubResource("AtlasTexture_moak5")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tfn74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgvgg")
 }],
 "loop": true,
 "name": &"se_walk",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,12 +244,13 @@ radius = 59.0762
 y_sort_enabled = true
 script = ExtResource("1_crmlk")
 inv = ExtResource("2_xwuex")
+sfx_footsteps = ExtResource("3_ca2nw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(-2, 12)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0htd3")
-animation = &"e_walk"
+animation = &"n_walk"
 offset = Vector2(0, -15)
 script = ExtResource("3_u1j5y")
 
@@ -381,3 +390,8 @@ shape = SubResource("CircleShape2D_ud4q5")
 [node name="PointLight2D" parent="." instance=ExtResource("2_ejmjk")]
 position = Vector2(0, -17)
 scale = Vector2(4, 4)
+
+[node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
+attenuation = 362.039
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
