@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
-[ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://Maps1/new_alley_intro.tscn" id="3_2rc1p"]
+[ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_2rc1p"]
 [ext_resource type="PackedScene" uid="uid://b41nj411bgfcu" path="res://assets/Nodes/TutorialGuy/tutorial_guy.tscn" id="3_xviv1"]
 [ext_resource type="PackedScene" uid="uid://b451xioc6dgje" path="res://assets/Nodes/NPC/npc.tscn" id="4_uptrf"]
 [ext_resource type="PackedScene" uid="uid://cw45vfupx3l8d" path="res://assets/Nodes/WeatherSystem/weather_control.tscn" id="5_0j2t6"]
 [ext_resource type="PackedScene" uid="uid://bnhp2ledt8yb7" path="res://assets/Nodes/Menu/Pause/pause_menu.tscn" id="6_l41qg"]
 [ext_resource type="PackedScene" uid="uid://1d2cnxjtrppa" path="res://assets/Nodes/NPC/npc(bird).tscn" id="7_dblty"]
 [ext_resource type="PackedScene" uid="uid://cx666y67r5sbs" path="res://assets/Nodes/NPC/npc_2.tscn" id="8_yqmt7"]
-[ext_resource type="PackedScene" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
-[ext_resource type="PackedScene" uid="uid://c7c17ler66tmj" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
+[ext_resource type="PackedScene" uid="uid://chxqjf5roeseg" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
+[ext_resource type="PackedScene" uid="uid://bw8nsniw2v0kq" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
@@ -38,30 +38,35 @@ scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
 z_index = 2
-position = Vector2(-3330, -4698)
+position = Vector2(-3812, -4897)
 scale = Vector2(3.14942, 3.88694)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_l41qg")]
+visible = false
 
 [node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(1934, 608)
 scale = Vector2(7.48, 7.48)
 
-[node name="npc2" parent="." instance=ExtResource("8_yqmt7")]
+[node name="NPC(lime)" parent="." instance=ExtResource("8_yqmt7")]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(1473, 409)
 scale = Vector2(3, 3)
 
 [node name="NPC(snow)" parent="." instance=ExtResource("9_vsbm7")]
 z_index = 2
+y_sort_enabled = true
 position = Vector2(1692, 400)
 scale = Vector2(4.2, 4.2)
 
 [node name="NPC(rat)" parent="." instance=ExtResource("10_ofdu6")]
-z_index = 2
+z_index = 1
+y_sort_enabled = true
 position = Vector2(2004, -125)
 scale = Vector2(5, 5)
 

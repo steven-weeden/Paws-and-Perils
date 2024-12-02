@@ -4,36 +4,53 @@ extends Node2D
 
 var currentWeather = "none"
 var playerInArea = false
+var playerInRain = false
+var playerInSun = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if playerInArea:
 		currentWeather == "rain"
-		#$AnimationPlayer.play("fadeRain")
+		if playerInRain == false:
+			playerInRain = true
+			playerInSun = true
+			$AnimationPlayer.play("fadeRain")
 		$rain.visible = true
 		$rainColor.visible = true
 		audio_stream_player.play()
 	else:
 		currentWeather == "none"
-		#$AnimationPlayer.play("fadeSun")
+		if playerInSun == true:
+			playerInSun = false
+			playerInRain = false
+			$AnimationPlayer.play("fadeSun")
+			await get_tree().create_timer(1.5)
+			audio_stream_player.stop()		
 		$rain.visible = false
 		$rainColor.visible = false	
-		audio_stream_player.stop()
+		
 		
 func _process(delta: float) -> void:
 	if playerInArea:
 		currentWeather == "rain"
-		#$AnimationPlayer.play("fadeRain")
+		if playerInRain == false:
+			playerInRain = true
+			playerInSun = true
+			$AnimationPlayer.play("fadeRain")
 		$rain.visible = true
 		$rainColor.visible = true
 		if audio_stream_player.playing == false:
 			audio_stream_player.play()
 	else:
 		currentWeather == "none"
-		#$AnimationPlayer.play("fadeSun")
-		$rain.visible = false
-		$rainColor.visible = false
-		audio_stream_player.stop()		
+		if playerInSun == true:
+			playerInSun = false
+			playerInRain = false
+			$AnimationPlayer.play("fadeSun")
+			await get_tree().create_timer(1.5)
+			audio_stream_player.stop()		
+		#$rain.visible = false
+		#$rainColor.visible = false
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

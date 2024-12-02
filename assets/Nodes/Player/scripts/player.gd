@@ -3,25 +3,19 @@ extends CharacterBody2D
 class_name player
 
 @export var health = 40
-
 @export var current_health = 40
-
 @export var strength = 1
-
 @export var agility = 1
-
 @export var defense = 1
-
 @export var crit_dmg = 1.0
-
 @export var level = 1
-
 @export var inv: inventory
 
+@export var sfx_footsteps : AudioStream
+var footstep_frames : Array = [1]
+
 var speed = 150
-
 var player_state 
-
 var toggleLight = false
 
 var savePath = "user://saves/"
@@ -103,6 +97,11 @@ func play_anim(dir):
 		if dir.x < -0.5 and dir.y < -0.5:
 			$AnimatedSprite2D.play("nw_walk")		
 
+func load_sfx(sfx_to_load):
+	if $sfx_player.stream != sfx_to_load:
+		$sfx_player.stop()
+		$sfx_player.stream = sfx_to_load
+
 func collect(item):
 	inv.insert(item)
 	
@@ -114,3 +113,10 @@ func _on_pause_menu_load() -> void:
 
 func _on_pause_menu_save() -> void:
 	saveData()
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $AnimatedSprite2D.animation == "idle": 
+		return
+	load_sfx(sfx_footsteps)
+	if $AnimatedSprite2D.frame in footstep_frames:
+		$sfx_player.play()
