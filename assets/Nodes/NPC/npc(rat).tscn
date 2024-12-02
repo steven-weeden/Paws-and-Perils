@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw8nsniw2v0kq"]
+[gd_scene load_steps=12 format=3 uid="uid://c7c17ler66tmj"]
 
 [ext_resource type="Script" path="res://assets/Nodes/NPC/npc(rat).gd" id="1_sy24x"]
 [ext_resource type="Texture2D" uid="uid://ci2lm2gdqq63h" path="res://assets/Nodes/NPC/Sprites/rat.png" id="2_xt02f"]

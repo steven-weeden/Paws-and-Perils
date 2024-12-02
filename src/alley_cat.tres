@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://slf2xmhvvj8"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_jlikb"]
+[ext_resource type="Texture2D" uid="uid://d2pmjairyhbyl" path="res://assets/environmentalSprites/Battle/cat_enemy.png" id="2_r071b"]
+
+[resource]
+script = ExtResource("1_jlikb")
+name = "Alley Cat"
+texture = ExtResource("2_r071b")
+health = 40
+damage = 1
+agility = 1
+defense = 1
+crit = 0.1
+EXPDefeat = 10
+GoldDefeat = 5

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://clxk1s72gvsto"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_5irir"]
+[ext_resource type="Texture2D" uid="uid://bkyvk2lsao240" path="res://assets/environmentalSprites/Battle/SANS.png" id="2_46cwk"]
+
+[resource]
+script = ExtResource("1_5irir")
+name = "sans"
+texture = ExtResource("2_46cwk")
+health = 50
+damage = 10
+agility = 1
+defense = 1
+crit = 1.3
+EXPDefeat = 20
+GoldDefeat = 15

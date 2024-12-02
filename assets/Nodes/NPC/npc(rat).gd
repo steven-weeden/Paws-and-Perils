@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 var playerInArea = false
 
+var battle = battleS.new()
+
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
 	
 func _process(delta: float) -> void:
 	if playerInArea:
 		$AnimatedSprite2D.play("Alarmed")
+		get_tree().change_scene_to_file("res://src/battle.tscn")
+		
 	else:
 		$AnimatedSprite2D.play("Idle")
 			
