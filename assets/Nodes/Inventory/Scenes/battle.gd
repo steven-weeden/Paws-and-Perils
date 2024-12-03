@@ -6,6 +6,7 @@ signal textbox_closed
 
 @export var enemies: Array = []  # Array of enemy Resource `.tres` files
 @export var enemy: Resource = preload("res://src/Rat.tres") 
+@onready var battle_music: AudioStreamPlayer = $battle_music
 
 var current_player_health = 0
 var current_enemy_health = 0
@@ -13,6 +14,7 @@ var is_defending = false
 
 
 func _ready():
+	battle_music.play()
 	var enemy: Resource = preload("res://src/Rat.tres")
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
@@ -174,6 +176,7 @@ func _on_attack_pressed() -> void:
 	
 	
 func show_results_screen():
+	battle_music.stop()
 	var results_scene = preload("res://src/results_screen.tscn")
 	var results_screen = results_scene.instantiate()
 	
