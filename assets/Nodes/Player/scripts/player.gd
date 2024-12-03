@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name player
 
+@onready var animatedSprite = $AnimatedSprite2D
+
 @export var health = 40
 @export var current_health = 40
 @export var strength = 1
@@ -15,7 +17,7 @@ class_name player
 var footstep_frames : Array = [1]
 
 var speed = 150
-var player_state 
+var player_state = "idle"
 var toggleLight = false
 
 var savePath = "user://saves/"
@@ -25,6 +27,7 @@ var playerData = PlayerData.new()
 func _ready() -> void:
 	$PointLight2D.visible = false
 	verifySave(savePath)
+	player_state = "idle"
 
 func verifySave(path: String):
 	DirAccess.make_dir_absolute(path)
@@ -75,27 +78,26 @@ func _physics_process(delta):
 			toggleLight = false
 	
 func play_anim(dir):
-	
 	if player_state == "idle":
-		$AnimatedSprite2D.play("idle")
+		animatedSprite.play("idle")
 	if player_state == "walking":
 		if dir.y == -1:
-			$AnimatedSprite2D.play("n_walk")
+			animatedSprite.play("n_walk")
 		if dir.y == 1:
-			$AnimatedSprite2D.play("s_walk")
+			animatedSprite.play("s_walk")
 		if dir.x == -1:
-			$AnimatedSprite2D.play("w_walk")
+			animatedSprite.play("w_walk")
 		if dir.x == 1:
-			$AnimatedSprite2D.play("e_walk")
+			animatedSprite.play("e_walk")
 		
 		if dir.x > 0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("ne_walk")
+			animatedSprite.play("ne_walk")
 		if dir.x > 0.5 and dir.y > 0.5:
-			$AnimatedSprite2D.play("se_walk")
+			animatedSprite.play("se_walk")
 		if dir.x < -0.5 and dir.y > 0.5:
-			$AnimatedSprite2D.play("sw_walk")
+			animatedSprite.play("sw_walk")
 		if dir.x < -0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("nw_walk")		
+			animatedSprite.play("nw_walk")		
 
 func load_sfx(sfx_to_load):
 	if $sfx_player.stream != sfx_to_load:

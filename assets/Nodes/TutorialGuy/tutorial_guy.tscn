@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b41nj411bgfcu"]
+[gd_scene load_steps=17 format=3 uid="uid://b41nj411bgfcu"]
 
 [ext_resource type="Script" path="res://assets/Nodes/TutorialGuy/tutorial_guy.gd" id="1_d8l41"]
 [ext_resource type="Texture2D" uid="uid://btq33uc47xiu8" path="res://assets/Sprites/characterSprites/Goober.png" id="1_ibuqw"]
 [ext_resource type="PackedScene" uid="uid://b6m2w4knbbajx" path="res://assets/Nodes/Dialogue/dialog.tscn" id="3_nv5ax"]
 [ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/QuestFunc.gd" id="4_qfiog"]
 [ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/MovementQuestCheck.gd" id="5_cgwqp"]
+[ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/BattleGoornCheck.gd" id="6_lqylm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1xcs"]
 atlas = ExtResource("1_ibuqw")
@@ -135,6 +136,15 @@ offset_right = 44.0
 offset_bottom = -60.0
 text = "Complete!"
 
+[node name="Fight" type="Button" parent="Dialog"]
+visible = false
+layout_mode = 0
+offset_left = -34.0
+offset_top = -91.0
+offset_right = 34.0
+offset_bottom = -60.0
+text = "Fight!"
+
 [node name="MovementQuest" type="Node2D" parent="Dialog"]
 script = ExtResource("4_qfiog")
 quest_name = "Movement Tutorial!"
@@ -152,6 +162,9 @@ quest_name = "Fight Goornelius!"
 quest_description = "Goornelius wants to teach you how to fight. Accept his challenge Gladiator!"
 reached_goal_text = "You're a born Killer!"
 quest_status = 0
+
+[node name="BattleGoornCheck" type="Node2D" parent="Dialog"]
+script = ExtResource("6_lqylm")
 
 [connection signal="body_entered" from="chatDetection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="chatDetection" to="." method="_on_chat_detection_body_exited"]
