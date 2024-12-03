@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c2om5fnbu55ox"]
 
-[ext_resource type="Script" path="res://src/buger.gd" id="1_3ndhg"]
+[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scripts/buger.gd" id="1_3ndhg"]
 [ext_resource type="Texture2D" uid="uid://hjk5yxu6ia66" path="res://assets/Nodes/Inventory/Items/buger.png" id="2_e4byf"]
 [ext_resource type="Resource" uid="uid://b73yj8kpwfyyd" path="res://assets/Nodes/Inventory/godotItems/bugar.tres" id="2_kdjay"]
 [ext_resource type="AudioStream" uid="uid://cihpr2431hydl" path="res://assets/Nodes/Inventory/Audio/mixkit-gaming-lock-2848_vMT6ZTUQ.wav" id="3_r286x"]

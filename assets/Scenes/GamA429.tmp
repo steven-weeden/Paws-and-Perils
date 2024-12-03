@@ -92,3 +92,4 @@ position = Vector2(661, 566)
 
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
+[connection signal="battle_finished" from="Battle" to="NPC(rat)" method="_on_battle_battle_finished"]

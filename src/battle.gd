@@ -5,7 +5,8 @@ class_name battleS
 signal textbox_closed
 
 @export var enemies: Array = []  # Array of enemy Resource `.tres` files
-@export var enemy: Resource = preload("res://src/Rat.tres") 
+@export var enemy: Resource
+@export var battle_finished: bool = false
 
 var current_player_health = 0
 var current_enemy_health = 0
@@ -13,7 +14,6 @@ var is_defending = false
 
 
 func _ready():
-	var enemy: Resource = preload("res://src/Rat.tres")
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
 	$EnemyContainer/Enemy.texture = enemy.texture
@@ -115,7 +115,10 @@ func _on_run_pressed() -> void:
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))
-	get_tree().quit()
+	Global.battle_finished = true
+	get_tree().change_scene_to_file("res://assets/Scenes/GameScene.tscn")
+	print("Battle Finished")
+	end_battle()
 
 
 func _on_attack_pressed() -> void:
@@ -198,10 +201,6 @@ func show_death_screen():
 	var death_scene = preload("res://src/death_screen.tscn")
 	var death_screen = death_scene.instantiate()
 	
-	
-	
-	
-	
 	get_tree().current_scene.add_child(death_screen)
 	
 	$ActionsPanel.hide()
@@ -215,11 +214,27 @@ func show_death_screen():
 
 func _on_defend_pressed() -> void:
 	$click_sound.play()
-	is_defending = true
+	if def_check(is_defending):
+		is_defending = true
+	else:
+		is_defending = false
 	
 	display_text("you brace your paws ready for defense")
 	await display_text_and_wait("you brace your paws ready for defense")
 	
 	enemy_turn()
-	
 # Helper functions for calculations
+func end_battle():
+	emit_signal("battle_finished")
+	
+func def_check(def_check) -> bool:
+	def_check = false
+	var chance = State.defense/10
+	var rand = (randi_range(1,10))/10
+	if chance >= rand:
+		def_check = true
+		return def_check
+	else:
+		def_check = false
+		return def_check
+	

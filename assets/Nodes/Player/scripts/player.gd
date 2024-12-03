@@ -3,26 +3,29 @@ extends CharacterBody2D
 class_name player
 
 @export var health = 40
-@export var current_health = 40
+@export var current_health = 5
 @export var strength = 1
 @export var agility = 1
 @export var defense = 1
-@export var crit_dmg = 1.0
+@export var crit_dmg = .25
 @export var level = 1
 @export var inv: inventory
+@export var gold = 1
+@export var currentEXP = 0
 
 @export var sfx_footsteps : AudioStream
 var footstep_frames : Array = [1]
 
 var return_from_battle = false
 
-var speed = 150
+var speed = 600
 var player_state 
 var toggleLight = false
 
 var savePath = "user://saves/"
 var saveName = "PlayerSave.tres"
 var playerData = PlayerData.new()
+var battle = battleS.new()
 
 func _ready() -> void:
 	$PointLight2D.visible = false
@@ -49,8 +52,8 @@ func on_start_load():
 		if playerData.slots[i] == null:
 			playerData.slots[i] = InvSlot.new()
 
-	self.inv.slots = playerData.slots
-	self.inv.emit_signal("update")
+	#self.inv.slots = playerData.slots
+	#self.inv.emit_signal("update")
 
 func _process(delta: float):
 	playerData.updatePos(self.position)
@@ -122,12 +125,18 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	load_sfx(sfx_footsteps)
 	if $AnimatedSprite2D.frame in footstep_frames:
 		$sfx_player.play()
-		
-func start_battle():
-	saveData()
-	if return_from_battle:
-		loadData()
-	else:
-		get_tree().change_scene_to_file("res://src/battle.tscn")
-		return_from_battle = true
 	
+func get_dmg() -> int:
+	var dmg = ((strength * 0.5) + randi_range(1,5))
+	return dmg
+	
+func def_check(def_check) -> bool:
+	def_check = false
+	var chance = defense/10
+	var rand = (randi_range(1,10))/100
+	if chance >= rand:
+		def_check = true
+		return def_check
+	else:
+		def_check = false
+		return def_check

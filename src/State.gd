@@ -1,13 +1,17 @@
 extends Node
 
-var current_health = 40
+var players = player.new()
 
-var max_health = 40
-var damage = 4
-var agility = 2
-var defense = 1
-var crit = .25
+var player_position: Vector2 = Vector2.ZERO
 
-var money = 0
-var currentEXP = 0
+var current_health = players.current_health
+
+var max_health = players.health
+var damage = players.get_dmg()
+var agility = players.agility
+var defense = players.defense
+var crit = players.crit_dmg
+
+var money = players.gold
+var currentEXP = players.currentEXP
 var EXPNext = 30

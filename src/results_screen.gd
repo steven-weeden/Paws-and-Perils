@@ -24,4 +24,10 @@ func update_exp_bar():
 
 func _on_continue_pressed() -> void:
 	await get_tree().create_timer(0.25).timeout
-	get_tree().quit()
+	Global.battle_finished = true
+	get_tree().change_scene_to_file("res://assets/Scenes/GameScene.tscn")
+	print("Battle Finished")
+	end_battle()
+	
+func end_battle():
+	emit_signal("battle_finished")

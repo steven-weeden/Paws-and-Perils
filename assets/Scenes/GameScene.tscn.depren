@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
-[ext_resource type="PackedScene" uid="uid://fjifxix5o4db" path="res://src/battle.tscn" id="14_imb5n"]
+[ext_resource type="PackedScene" uid="uid://cck8xu301jnty" path="res://src/battle.tscn" id="14_imb5n"]
 
 [node name="World" type="Node2D"]
 z_index = 22
