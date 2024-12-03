@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
-[ext_resource type="PackedScene" uid="uid://dm2foli86pdnc" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
+[ext_resource type="PackedScene" uid="uid://d2jleumpgreta" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
 
 [node name="World" type="Node2D"]
 z_index = 22
