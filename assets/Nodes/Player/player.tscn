@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=44 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="4_rcyyu"]
 [ext_resource type="PackedScene" uid="uid://l5ipd4t7pwgl" path="res://assets/Nodes/Inventory/Scenes/skill_UI.tscn" id="6_xhcxm"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar.gd" id="7_36hl3"]
+[ext_resource type="Script" path="res://assets/Nodes/Player/scripts/quest.gd" id="7_plkou"]
+[ext_resource type="PackedScene" uid="uid://bbn5s8di8ecte" path="res://assets/Nodes/QuestBar/quest_bar.tscn" id="7_ylqeu"]
 [ext_resource type="Texture2D" uid="uid://byeujqbqmpeal" path="res://assets/Sprites/characterSprites/healthbarProgress.png" id="8_4sfst"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar_texture.gd" id="9_jhpky"]
 
@@ -269,27 +271,53 @@ shape = SubResource("RectangleShape2D_1rqt4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("4_rcyyu")]
+[node name="Quest" type="Node2D" parent="UILayer"]
+position = Vector2(921, -10)
+script = ExtResource("7_plkou")
+
+[node name="QuestBar" parent="UILayer/Quest" instance=ExtResource("7_ylqeu")]
+scale = Vector2(6, 6)
+
+[node name="QuestText" type="Node2D" parent="UILayer/Quest"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UILayer/Quest/QuestText"]
+offset_left = 79.0
+offset_top = 61.0
+offset_right = 958.0
+offset_bottom = 132.0
+theme_override_font_sizes/normal_font_size = 50
+text = "No Quest Activated"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UILayer/Quest/QuestText"]
+offset_left = 78.0
+offset_top = 130.0
+offset_right = 957.0
+offset_bottom = 201.0
+theme_override_font_sizes/normal_font_size = 25
+text = "Look Back Later!"
+
+[node name="Inventory UI" parent="UILayer" instance=ExtResource("4_rcyyu")]
 z_index = 22
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -303.0
-offset_right = 125.0
-offset_bottom = -260.0
+offset_left = 46.0
+offset_top = -293.0
+offset_right = 131.0
+offset_bottom = -250.0
 grow_horizontal = 1
 grow_vertical = 0
 scale = Vector2(6, 6)
 size_flags_vertical = 4
 
-[node name="ParallexBackground" parent="CanvasLayer" instance=ExtResource("2_ge1t3")]
+[node name="ParallexBackground" parent="UILayer" instance=ExtResource("2_ge1t3")]
 z_index = -22
+position = Vector2(0, 2)
 
-[node name="SkillUi" parent="CanvasLayer" instance=ExtResource("6_xhcxm")]
+[node name="SkillUi" parent="UILayer" instance=ExtResource("6_xhcxm")]
 z_index = 22
 anchors_preset = -1
 anchor_left = 0.025
@@ -304,7 +332,7 @@ grow_horizontal = 1
 scale = Vector2(2, 2)
 size_flags_vertical = 4
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player_h_bar")]
+[node name="ProgressBar" type="ProgressBar" parent="UILayer" node_paths=PackedStringArray("player_h_bar")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -320,24 +348,24 @@ show_percentage = false
 script = ExtResource("7_36hl3")
 player_h_bar = NodePath("../..")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ProgressBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/ProgressBar"]
 visible = false
 layout_mode = 0
 offset_right = 314.0
 offset_bottom = 38.0
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/ProgressBar/HBoxContainer"]
+[node name="Label" type="Label" parent="UILayer/ProgressBar/HBoxContainer"]
 visible = false
 layout_mode = 2
 text = "40"
 
-[node name="Label2" type="Label" parent="CanvasLayer/ProgressBar/HBoxContainer"]
+[node name="Label2" type="Label" parent="UILayer/ProgressBar/HBoxContainer"]
 visible = false
 layout_mode = 2
 text = "/ 40"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player_h_bar")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UILayer" node_paths=PackedStringArray("player_h_bar")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -359,18 +387,18 @@ tint_progress = Color(0.672305, 1.76881e-06, 6.257e-07, 1)
 script = ExtResource("9_jhpky")
 player_h_bar = NodePath("../..")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TextureProgressBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/TextureProgressBar"]
 layout_mode = 0
 offset_top = -2.0
 offset_right = 314.0
 offset_bottom = 36.0
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureProgressBar/HBoxContainer"]
+[node name="Label" type="Label" parent="UILayer/TextureProgressBar/HBoxContainer"]
 layout_mode = 2
 text = "40"
 
-[node name="Label2" type="Label" parent="CanvasLayer/TextureProgressBar/HBoxContainer"]
+[node name="Label2" type="Label" parent="UILayer/TextureProgressBar/HBoxContainer"]
 layout_mode = 2
 text = "/ 40"
 
@@ -390,6 +418,8 @@ shape = SubResource("CircleShape2D_ud4q5")
 [node name="PointLight2D" parent="." instance=ExtResource("2_ejmjk")]
 position = Vector2(0, -17)
 scale = Vector2(4, 4)
+range_z_min = -10
+range_z_max = 1000
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
 attenuation = 362.039
