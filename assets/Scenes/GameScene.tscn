@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://iitjqkjxstfu"]
+[gd_scene load_steps=15 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_2rc1p"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
+[ext_resource type="PackedScene" uid="uid://dm2foli86pdnc" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
 
 [node name="World" type="Node2D"]
 z_index = 22
@@ -85,5 +86,11 @@ position = Vector2(678, 449)
 z_index = 3
 position = Vector2(661, 566)
 
+[node name="StaticBody2D" parent="." instance=ExtResource("14_ovsjv")]
+z_index = 1
+position = Vector2(1278, 117)
+scale = Vector2(8, 8)
+
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
+[connection signal="playerIsResting" from="StaticBody2D" to="player" method="_on_static_body_2d_player_is_resting"]
