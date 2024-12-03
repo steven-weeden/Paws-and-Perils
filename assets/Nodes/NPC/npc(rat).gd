@@ -11,6 +11,8 @@ func _process(delta: float) -> void:
 	if playerInArea:
 		$AnimatedSprite2D.play("Alarmed")
 		get_tree().change_scene_to_file("res://src/battle.tscn")
+		#var players = player.new()
+		#players.start_battle()
 		
 	else:
 		$AnimatedSprite2D.play("Idle")

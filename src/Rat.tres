@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://b4k6qt82lnfp"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_tpvvh"]
+[ext_resource type="Texture2D" uid="uid://dyptmq4wdyil4" path="res://assets/Nodes/NPC/Sprites/EnemyRat.png" id="2_dilfn"]
+
+[resource]
+script = ExtResource("1_tpvvh")
+name = "Hawk Tua"
+texture = ExtResource("2_dilfn")
+health = 20
+damage = 1
+agility = 1
+defense = 1
+crit = 0.15
+EXPDefeat = 5
+GoldDefeat = 3

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://1d2cnxjtrppa" path="res://assets/Nodes/NPC/npc(bird).tscn" id="7_dblty"]
 [ext_resource type="PackedScene" uid="uid://cx666y67r5sbs" path="res://assets/Nodes/NPC/npc_2.tscn" id="8_yqmt7"]
 [ext_resource type="PackedScene" uid="uid://chxqjf5roeseg" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
-[ext_resource type="PackedScene" uid="uid://bw8nsniw2v0kq" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
+[ext_resource type="PackedScene" uid="uid://c7c17ler66tmj" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]

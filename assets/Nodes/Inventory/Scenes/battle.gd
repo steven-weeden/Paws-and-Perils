@@ -5,7 +5,7 @@ class_name battleS
 signal textbox_closed
 
 @export var enemies: Array = []  # Array of enemy Resource `.tres` files
-@export var enemy: Resource = null
+@export var enemy: Resource = preload("res://src/Rat.tres") 
 
 var current_player_health = 0
 var current_enemy_health = 0
@@ -13,9 +13,7 @@ var is_defending = false
 
 
 func _ready():
-	randomize()  # Initialize random number generator
-	enemy = enemies[int(randf() * enemies.size())]  # Randomly select an enemy
-	
+	var enemy: Resource = preload("res://src/Rat.tres")
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
 	$EnemyContainer/Enemy.texture = enemy.texture

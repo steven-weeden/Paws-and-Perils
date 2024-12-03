@@ -14,6 +14,8 @@ class_name player
 @export var sfx_footsteps : AudioStream
 var footstep_frames : Array = [1]
 
+var return_from_battle = false
+
 var speed = 150
 var player_state 
 var toggleLight = false
@@ -120,3 +122,12 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	load_sfx(sfx_footsteps)
 	if $AnimatedSprite2D.frame in footstep_frames:
 		$sfx_player.play()
+		
+func start_battle():
+	saveData()
+	if return_from_battle:
+		loadData()
+	else:
+		get_tree().change_scene_to_file("res://src/battle.tscn")
+		return_from_battle = true
+	
