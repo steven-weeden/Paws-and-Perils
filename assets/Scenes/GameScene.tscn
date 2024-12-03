@@ -44,7 +44,6 @@ scale = Vector2(3.14942, 3.88694)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_l41qg")]
-visible = false
 
 [node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
 z_index = 1
