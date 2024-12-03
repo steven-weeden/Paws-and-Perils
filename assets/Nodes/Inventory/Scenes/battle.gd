@@ -165,6 +165,20 @@ func _on_attack_pressed() -> void:
 		
 		State.currentEXP += enemy.EXPDefeat
 		
+		if State.currentEXP == State.EXPNext:
+			
+			display_text("OH MEOW! You leveled up!")
+			await display_text_and_wait("OH MEOW! You leveled up!")
+			
+			State.EXPNext += 5
+			State.EXP = 0
+			
+			State.max_health += 5
+			State.damage += 1
+			State.agility += 1
+			State.defense += 1
+			State.crit += .02
+		
 		
 		await show_results_screen()
 		return
