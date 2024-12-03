@@ -47,6 +47,9 @@ func saveData():
 	
 func on_start_load():
 	self.position = playerData.savePos
+	self.current_health = playerData.saveHealth
+	$"CanvasLayer/ProgressBar".update()
+	$"CanvasLayer/TextureProgressBar".update()
 	
 	for i in range(playerData.slots.size()):
 		if playerData.slots[i] == null:
@@ -58,6 +61,7 @@ func on_start_load():
 func _process(delta: float):
 	playerData.updatePos(self.position)
 	playerData.update_slots(self.inv.slots)
+	playerData.updateHealth(self.current_health)
 	
 func _physics_process(delta): 
 	var direction = Input.get_vector("left", "right", "up", "down")

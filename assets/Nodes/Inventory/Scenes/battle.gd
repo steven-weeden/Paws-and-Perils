@@ -113,7 +113,6 @@ func enemy_turn():
 
 func _on_run_pressed() -> void:
 	$click_sound.play()
-	
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))

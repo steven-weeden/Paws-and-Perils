@@ -72,7 +72,7 @@ position = Vector2(-9.53674e-07, 2)
 scale = Vector2(0.392857, 0.392857)
 sprite_frames = SubResource("SpriteFrames_rd5yh")
 animation = &"Sleep"
-frame_progress = 0.110528
+frame_progress = 0.335381
 
 [node name="Area2D" type="Area2D" parent="."]
 
