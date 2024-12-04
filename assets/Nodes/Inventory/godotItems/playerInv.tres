@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="inventory" load_steps=11 format=3 uid="uid://ct0vv64w8m2r6"]
+
+[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scripts/inventory.gd" id="2_jtd16"]
+[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scripts/Inv_slot.gd" id="2_kiade"]
+
+[sub_resource type="Resource" id="Resource_o0fjs"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_hq5ub"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_8igem"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_tk7os"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_3sv1m"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_aapv1"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_2uofr"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_vtl0q"]
+script = ExtResource("2_kiade")
+amount = 0
+
+[resource]
+script = ExtResource("2_jtd16")
+slots = Array[ExtResource("2_kiade")]([SubResource("Resource_o0fjs"), SubResource("Resource_hq5ub"), SubResource("Resource_8igem"), SubResource("Resource_tk7os"), SubResource("Resource_3sv1m"), SubResource("Resource_aapv1"), SubResource("Resource_2uofr"), SubResource("Resource_vtl0q")])

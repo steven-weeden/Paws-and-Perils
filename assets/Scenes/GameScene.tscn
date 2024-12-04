@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://iitjqkjxstfu"]
+
+[ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
+[ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://Maps1/new_alley_intro.tscn" id="3_2rc1p"]
+[ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="3_qhm5u"]
+[ext_resource type="PackedScene" uid="uid://ch2jnox0ldf66" path="res://assets/Nodes/Inventory/Scenes/tuna.tscn" id="4_6hlr5"]
+[ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="5_tsers"]
+[ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="6_icdjb"]
+
+[node name="World" type="Node2D"]
+z_index = 22
+y_sort_enabled = true
+
+[node name="player" parent="." instance=ExtResource("1_s15fd")]
+z_index = 1
+position = Vector2(962, 538)
+
+[node name="NewAlleyIntro" parent="." instance=ExtResource("3_2rc1p")]
+position = Vector2(961, 534)
+scale = Vector2(5, 5)
+
+[node name="buger" parent="." instance=ExtResource("3_qhm5u")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1164, 536)
+scale = Vector2(4, 4)
+
+[node name="buger2" parent="." instance=ExtResource("3_qhm5u")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(751, 526)
+scale = Vector2(4, 4)
+
+[node name="buger3" parent="." instance=ExtResource("3_qhm5u")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(965, 341)
+scale = Vector2(4, 4)
+
+[node name="tuna" parent="." instance=ExtResource("4_6hlr5")]
+position = Vector2(924, 688)
+scale = Vector2(3, 3)
+
+[node name="tuna3" parent="." instance=ExtResource("4_6hlr5")]
+position = Vector2(573, 654)
+scale = Vector2(3, 3)
+
+[node name="tuna2" parent="." instance=ExtResource("4_6hlr5")]
+position = Vector2(1152, 719)
+scale = Vector2(3, 3)
+
+[node name="milkJug" parent="." instance=ExtResource("5_tsers")]
+position = Vector2(423, 571)
+scale = Vector2(3, 3)
+
+[node name="milkJug2" parent="." instance=ExtResource("5_tsers")]
+position = Vector2(233, 586)
+scale = Vector2(3, 3)
+
+[node name="milkJug3" parent="." instance=ExtResource("5_tsers")]
+z_index = 1
+position = Vector2(295, 414)
+scale = Vector2(3, 3)
+
+[node name="milkJug4" parent="." instance=ExtResource("5_tsers")]
+z_index = 1
+position = Vector2(108, 440)
+scale = Vector2(3, 3)
+
+[node name="sushi" parent="." instance=ExtResource("6_icdjb")]
+z_index = 1
+position = Vector2(558, 465)
+scale = Vector2(2, 2)
+
+[node name="sushi2" parent="." instance=ExtResource("6_icdjb")]
+z_index = 1
+position = Vector2(649, 342)
+scale = Vector2(2, 2)
+
+[node name="sushi3" parent="." instance=ExtResource("6_icdjb")]
+z_index = 1
+position = Vector2(496, 298)
+scale = Vector2(2, 2)
+
+[node name="sushi4" parent="." instance=ExtResource("6_icdjb")]
+z_index = 1
+position = Vector2(418, 406)
+scale = Vector2(2, 2)
