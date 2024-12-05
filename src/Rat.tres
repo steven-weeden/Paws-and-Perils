@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_tpvvh")
-name = "Hawk Tua"
+name = "Rat"
 texture = ExtResource("2_dilfn")
 health = 20
 damage = 1

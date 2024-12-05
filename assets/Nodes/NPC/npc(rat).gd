@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
+class_name rat
+
 var playerInArea = false
 @onready var game_scene = get_node("/root/World")
 @onready var battle = get_node("/root/World/Battle")
 @onready var battles = battleS.new()
 var battle_started = false  # Tracks if the battle has started
 var path = "res://src/Rat.tres"
+
+signal rat_battle
 
 
 var defeated = 0
@@ -22,6 +26,7 @@ func _process(delta: float) -> void:
 	if playerInArea:
 		if Global.battle_finished == false:
 			if Input.is_action_just_pressed("interact"):
+				emit_signal("rat_battle")
 				defeated = 1
 				game_scene.start_battle(self)  # Pass this enemy node to be removed
 			

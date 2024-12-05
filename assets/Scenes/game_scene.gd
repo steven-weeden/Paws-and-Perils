@@ -22,6 +22,7 @@ func start_battle(enemy_node: Node):
 	
 	# Save player position and transition to the battle scene
 	State.player_position = player.position
+	player.saveData()
 	return_from_battle = true
 	get_tree().change_scene_to_file(battle_scene)
 
@@ -39,3 +40,4 @@ func finish_battle():
 	# Return to the player's position
 	player.position = State.player_position
 	print("Battle Finished in GameScene")
+	

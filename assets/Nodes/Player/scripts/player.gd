@@ -18,7 +18,7 @@ var footstep_frames : Array = [1]
 
 var return_from_battle = false
 
-var speed = 600
+var speed = 325
 var player_state 
 var toggleLight = false
 

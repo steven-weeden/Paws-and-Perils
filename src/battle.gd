@@ -7,13 +7,21 @@ signal textbox_closed
 @export var enemies: Array = []  # Array of enemy Resource `.tres` files
 @export var enemy: Resource
 @export var battle_finished: bool = false
+@onready var rats = rat.new()
+@onready var rat_res: Resource = preload("res://src/Rat.tres")
 
 var current_player_health = 0
 var current_enemy_health = 0
 var is_defending = false
+var chance = 0
+var rand = 0
+var enm_choice
 
 
 func _ready():
+	rats.connect("rat_battle", Callable(self, "rat_batt"))
+	if rat_batt():
+		enemy = rat_res
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
 	$EnemyContainer/Enemy.texture = enemy.texture
@@ -31,11 +39,15 @@ func _ready():
 	if enemy.name == "sans":
 		display_text("Hey kiddo, How'd I end up here?")
 		await display_text_and_wait("Hey kiddo, How'd I end up here?")
+		
+	chance = State.defense/10
+	rand = (randi_range(1,2))/10
 
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
 	progress_bar.max_value = max_health
 	progress_bar.get_node("Label").text = "HP: %d/%d" % [health, max_health]
+	
 
 
 func _input(event):
@@ -229,8 +241,6 @@ func end_battle():
 	
 func def_check(def_check) -> bool:
 	def_check = false
-	var chance = State.defense/10
-	var rand = (randi_range(1,10))/10
 	if chance >= rand:
 		def_check = true
 		return def_check
@@ -238,3 +248,5 @@ func def_check(def_check) -> bool:
 		def_check = false
 		return def_check
 	
+func rat_batt() -> bool:
+	return true
