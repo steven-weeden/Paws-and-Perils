@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar.gd" id="7_36hl3"]
 [ext_resource type="Texture2D" uid="uid://byeujqbqmpeal" path="res://assets/Sprites/characterSprites/healthbarProgress.png" id="8_4sfst"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar_texture.gd" id="9_jhpky"]
-[ext_resource type="PackedScene" uid="uid://cgrhc33c58ckt" path="res://assets/Nodes/Player/transition.tscn" id="14_wwih2"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Player/transition.tscn" id="14_wwih2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct8fr"]
 atlas = ExtResource("1_3k1jf")

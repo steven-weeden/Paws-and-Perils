@@ -24,6 +24,7 @@ func start_battle(enemy_node: Node):
 	State.player_position = player.position
 	player.saveData()
 	return_from_battle = true
+	Global.battle_start = true
 	get_tree().change_scene_to_file(battle_scene)
 
 	# Mark the enemy to be removed after the battle

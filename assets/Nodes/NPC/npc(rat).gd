@@ -16,8 +16,8 @@ var defeated = 0
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
-	battles.connect("battle_finished", Callable(self, "_on_battle_finished"))
-	battle.connect("battle_finished", Callable(self, "_on_battle_finished"))
+	#battles.connect("battle_finished", Callable(self, "_on_battle_finished"))
+	#battle.connect("battle_finished", Callable(self, "_on_battle_finished"))
 
 func _process(delta: float) -> void:
 	if Global.battle_finished == true:

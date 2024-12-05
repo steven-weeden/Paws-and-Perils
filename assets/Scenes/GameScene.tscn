@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://iitjqkjxstfu"]
+[gd_scene load_steps=17 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="Script" path="res://assets/Scenes/game_scene.gd" id="1_vigrb"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
 [ext_resource type="PackedScene" uid="uid://fjifxix5o4db" path="res://src/battle.tscn" id="14_imb5n"]
-[ext_resource type="PackedScene" uid="uid://d2jleumpgreta" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
 
 [node name="World" type="Node2D"]
 z_index = 22

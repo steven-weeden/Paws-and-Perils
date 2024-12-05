@@ -1,13 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://cck8xu301jnty"]
+[gd_scene load_steps=22 format=3 uid="uid://fjifxix5o4db"]
 
-[ext_resource type="Script" path="res://assets/Nodes/Inventory/Scenes/battle.gd" id="1_iw20h"]
-[ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="2_3s3vl"]
-[ext_resource type="Resource" uid="uid://clxk1s72gvsto" path="res://src/Sans.tres" id="2_bu0v6"]
-[ext_resource type="Resource" uid="uid://slf2xmhvvj8" path="res://src/alley_cat.tres" id="2_tpqfq"]
-[ext_resource type="Texture2D" uid="uid://osv3yn45qavh" path="res://assets/environmentalSprites/Battle/fightbg.png" id="4_1exl3"]
-[ext_resource type="Resource" uid="uid://dtbmtt6sxbxgw" path="res://src/Bird.tres" id="4_4x0k8"]
-[ext_resource type="AudioStream" uid="uid://bm3dg7upatem2" path="res://assets/environmentalSprites/Battle/jump.wav" id="6_t0quu"]
-[ext_resource type="AudioStream" uid="uid://dgvk65g67lveg" path="res://assets/Nodes/Sounds/assets/music/battleMusic.mp3" id="8_qsqyb"]
+[ext_resource type="Script" path="res://src/battle.gd" id="1_5hvih"]
+[ext_resource type="Resource" uid="uid://slf2xmhvvj8" path="res://src/alley_cat.tres" id="2_mjeis"]
+[ext_resource type="Resource" uid="uid://clxk1s72gvsto" path="res://src/Sans.tres" id="3_l5ryj"]
+[ext_resource type="Resource" uid="uid://dtbmtt6sxbxgw" path="res://src/Bird.tres" id="4_gqvd7"]
+[ext_resource type="Texture2D" uid="uid://osv3yn45qavh" path="res://assets/environmentalSprites/Battle/fightbg.png" id="5_efgi0"]
+[ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="6_l1k1n"]
+[ext_resource type="AudioStream" uid="uid://bm3dg7upatem2" path="res://assets/environmentalSprites/Battle/jump.wav" id="7_8cr4s"]
+[ext_resource type="AudioStream" uid="uid://dgvk65g67lveg" path="res://assets/Nodes/Sounds/assets/music/battleMusic.mp3" id="8_42k8t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk08c"]
 bg_color = Color(0.787567, 0.0362762, 0.0966284, 1)
@@ -176,9 +176,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hvd8c")
-enemies = [ExtResource("2_4lfcl"), ExtResource("3_x0eo3"), ExtResource("4_u6ino")]
-enemy = ExtResource("2_4lfcl")
+script = ExtResource("1_5hvih")
+enemies = [ExtResource("2_mjeis"), ExtResource("3_l5ryj"), ExtResource("4_gqvd7")]
+enemy = ExtResource("2_mjeis")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -193,7 +193,7 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_ilv5x")
+texture = ExtResource("5_efgi0")
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -235,7 +235,7 @@ vertical_alignment = 1
 
 [node name="Enemy" type="TextureRect" parent="EnemyContainer"]
 layout_mode = 2
-texture = ExtResource("6_5btsg")
+texture = ExtResource("6_l1k1n")
 
 [node name="PlayerPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 90)
@@ -397,12 +397,10 @@ libraries = {
 }
 
 [node name="click_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_t0quu")
+stream = ExtResource("7_8cr4s")
 
 [node name="battle_music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_qsqyb")
-volume_db = -2.0
-autoplay = true
+stream = ExtResource("8_42k8t")
 
 [connection signal="pressed" from="ActionsPanel/Actions/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="ActionsPanel/Actions/Defend" to="." method="_on_defend_pressed"]

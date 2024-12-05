@@ -21,7 +21,10 @@ var enm_choice
 
 
 func _ready():
-	battle_music.play()
+	if Global.battle_start == true:
+		battle_music.play()
+		Global.battle_start = false
+		
 	rats.connect("rat_battle", Callable(self, "rat_batt"))
 	if rat_batt():
 		enemy = rat_res
