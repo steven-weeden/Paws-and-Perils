@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name player
 
 @export var health = 40
-@export var current_health = 5
+@export var current_health = 20
 @export var strength = 1
 @export var agility = 1
 @export var defense = 1
@@ -13,6 +13,9 @@ class_name player
 @export var gold = 1
 @export var currentEXP = 0
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
 @export var sfx_footsteps : AudioStream
 var footstep_frames : Array = [1]
 
@@ -21,6 +24,7 @@ var return_from_battle = false
 var speed = 325
 var player_state 
 var toggleLight = false
+var isResting = false
 
 var savePath = "user://saves/"
 var saveName = "PlayerSave.tres"
@@ -47,6 +51,9 @@ func saveData():
 	
 func on_start_load():
 	self.position = playerData.savePos
+	self.current_health = playerData.saveHealth
+	$"CanvasLayer/ProgressBar".update()
+	$"CanvasLayer/TextureProgressBar".update()
 	
 	for i in range(playerData.slots.size()):
 		if playerData.slots[i] == null:
@@ -58,10 +65,10 @@ func on_start_load():
 func _process(delta: float):
 	playerData.updatePos(self.position)
 	playerData.update_slots(self.inv.slots)
+	playerData.updateHealth(self.current_health)
 	
 func _physics_process(delta): 
 	var direction = Input.get_vector("left", "right", "up", "down")
-	
 	if direction.x == 0 and direction.y == 0:
 		player_state = "idle"
 	elif direction.x != 0 or direction.y != 0:
@@ -80,7 +87,6 @@ func _physics_process(delta):
 			toggleLight = false
 	
 func play_anim(dir):
-	
 	if player_state == "idle":
 		$AnimatedSprite2D.play("idle")
 	if player_state == "walking":
@@ -140,3 +146,14 @@ func def_check(def_check) -> bool:
 	else:
 		def_check = false
 		return def_check
+		
+func _on_static_body_2d_player_is_resting() -> void:
+	$"transition/AnimationPlayer".play("TransIn")
+	speed = 0
+	$sfx_player.stop()
+	await get_tree().create_timer(1.5).timeout
+	$"transition/AnimationPlayer".play("TransOut")
+	self.current_health = health
+	$"CanvasLayer/ProgressBar".update()
+	$"CanvasLayer/TextureProgressBar".update()
+	speed = 150

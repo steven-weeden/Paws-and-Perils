@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
 [ext_resource type="PackedScene" uid="uid://fjifxix5o4db" path="res://src/battle.tscn" id="14_imb5n"]
+[ext_resource type="PackedScene" uid="uid://d2jleumpgreta" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
 
 [node name="World" type="Node2D"]
 z_index = 22
@@ -90,5 +91,11 @@ position = Vector2(661, 566)
 
 [node name="Battle" parent="." instance=ExtResource("14_imb5n")]
 
+[node name="StaticBody2D" parent="." instance=ExtResource("14_ovsjv")]
+z_index = 1
+position = Vector2(1278, 117)
+scale = Vector2(8, 8)
+
 [connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
+[connection signal="playerIsResting" from="StaticBody2D" to="player" method="_on_static_body_2d_player_is_resting"]

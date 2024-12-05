@@ -10,6 +10,8 @@ signal textbox_closed
 @onready var rats = rat.new()
 @onready var rat_res: Resource = preload("res://src/Rat.tres")
 
+@onready var battle_music: AudioStreamPlayer = $battle_music
+
 var current_player_health = 0
 var current_enemy_health = 0
 var is_defending = false
@@ -19,6 +21,7 @@ var enm_choice
 
 
 func _ready():
+	battle_music.play()
 	rats.connect("rat_battle", Callable(self, "rat_batt"))
 	if rat_batt():
 		enemy = rat_res
@@ -123,7 +126,6 @@ func enemy_turn():
 
 func _on_run_pressed() -> void:
 	$click_sound.play()
-	
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))
@@ -180,6 +182,20 @@ func _on_attack_pressed() -> void:
 		
 		State.currentEXP += enemy.EXPDefeat
 		
+		if State.currentEXP == State.EXPNext:
+			
+			display_text("OH MEOW! You leveled up!")
+			await display_text_and_wait("OH MEOW! You leveled up!")
+			
+			State.EXPNext += 5
+			State.EXP = 0
+			
+			State.max_health += 5
+			State.damage += 1
+			State.agility += 1
+			State.defense += 1
+			State.crit += .02
+		
 		
 		await show_results_screen()
 		return
@@ -189,6 +205,7 @@ func _on_attack_pressed() -> void:
 	
 	
 func show_results_screen():
+	battle_music.stop()
 	var results_scene = preload("res://src/results_screen.tscn")
 	var results_screen = results_scene.instantiate()
 	

@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2jleumpgreta"]
+
+[ext_resource type="Script" path="res://assets/Nodes/Player/rest.gd" id="1_vya78"]
+[ext_resource type="Texture2D" uid="uid://coaj8blagall7" path="res://assets/Nodes/Player/sprites/cardbox.png" id="2_1eo0k"]
+[ext_resource type="Texture2D" uid="uid://bwpoaqy10nq5i" path="res://assets/Nodes/Player/sprites/cat(sleeping).png" id="3_nx7mn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owu0x"]
+atlas = ExtResource("2_1eo0k")
+region = Rect2(54, 126, 54, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3fws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owu0x")
+}],
+"loop": true,
+"name": &"box(no cat)",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q72wg"]
+atlas = ExtResource("3_nx7mn")
+region = Rect2(0, 168, 32, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srddm"]
+atlas = ExtResource("3_nx7mn")
+region = Rect2(32, 168, 32, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jfga"]
+atlas = ExtResource("3_nx7mn")
+region = Rect2(64, 168, 32, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd5yh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q72wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srddm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jfga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srddm")
+}],
+"loop": true,
+"name": &"Sleep",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jfev"]
+size = Vector2(19, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jihq"]
+size = Vector2(15, 10)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_vya78")
+
+[node name="Box" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.369048, 0.369048)
+sprite_frames = SubResource("SpriteFrames_p3fws")
+animation = &"box(no cat)"
+
+[node name="Cat" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(-9.53674e-07, 2)
+scale = Vector2(0.392857, 0.392857)
+sprite_frames = SubResource("SpriteFrames_rd5yh")
+animation = &"Sleep"
+frame_progress = 0.335381
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_6jfev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_0jihq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
