@@ -38,6 +38,8 @@ func _ready():
 		
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health
+	
+	Global.health = current_player_health
 		
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
