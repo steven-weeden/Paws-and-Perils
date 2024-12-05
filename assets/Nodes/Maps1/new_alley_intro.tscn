@@ -8877,7 +8877,7 @@ texture = SubResource("GradientTexture2D_ukj4n")
 energy = 0.5
 blend_mode = 1
 range_z_min = 0
-range_z_max = 1000
+range_z_max = 999
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

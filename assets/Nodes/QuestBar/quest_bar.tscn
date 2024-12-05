@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbn5s8di8ecte"]
+
+[ext_resource type="Texture2D" uid="uid://87fj0f53wuyh" path="res://assets/Sprites/uiSprites/QuestBar/Quest.png" id="1_708qv"]
+
+[node name="QuestBar" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 164.0
+offset_bottom = 56.0
+texture = ExtResource("1_708qv")
+draw_center = false
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4

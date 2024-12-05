@@ -9,8 +9,10 @@ signal textbox_closed
 @export var battle_finished: bool = false
 @onready var rats = rat.new()
 @onready var rat_res: Resource = preload("res://src/Rat.tres")
-
+@onready var goob_res: Resource = preload("res://src/Goorn.tres")
 @onready var battle_music: AudioStreamPlayer = $battle_music
+@onready var players: player = $"../player"
+
 
 var current_player_health = 0
 var current_enemy_health = 0
@@ -18,22 +20,28 @@ var is_defending = false
 var chance = 0
 var rand = 0
 var enm_choice
+var goob_battle: bool = false
 
 
 func _ready():
 	if Global.battle_start == true:
 		battle_music.play()
 		Global.battle_start = false
+	
 		
 	rats.connect("rat_battle", Callable(self, "rat_batt"))
-	if rat_batt():
+	if Global.goob_fight == true:
+		enemy = goob_res
+		Global.goob_fight = false
+	elif rat_batt():
 		enemy = rat_res
-	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
-	set_health($PlayerPanel/PlayerData/ProgressBar, State.current_health, State.max_health)
-	$EnemyContainer/Enemy.texture = enemy.texture
-	
+		
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health
+		
+	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
+	set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
+	$EnemyContainer/Enemy.texture = enemy.texture
 	
 	$TextBox.hide()
 	$ActionsPanel.hide()
@@ -102,6 +110,7 @@ func enemy_turn():
 		damage = int(round(damage))  # Convert to integer
 		
 		current_player_health = max(0, current_player_health - damage)
+		Global.health = current_player_health
 		set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
 	
 		$AnimationPlayer.play("take_damage")
@@ -132,7 +141,9 @@ func _on_run_pressed() -> void:
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))
-	Global.battle_finished = true
+	Global.return_from_battle = true
+	Global.health = current_player_health
+	print("PLAYER HEALTH", current_player_health)
 	get_tree().change_scene_to_file("res://assets/Scenes/GameScene.tscn")
 	print("Battle Finished")
 	end_battle()
@@ -191,7 +202,7 @@ func _on_attack_pressed() -> void:
 			await display_text_and_wait("OH MEOW! You leveled up!")
 			
 			State.EXPNext += 5
-			State.EXP = 0
+			State.currentEXP = 0
 			
 			State.max_health += 5
 			State.damage += 1
@@ -270,3 +281,7 @@ func def_check(def_check) -> bool:
 	
 func rat_batt() -> bool:
 	return true
+
+
+func _on_world_goob_battle() -> void:
+	goob_battle = true

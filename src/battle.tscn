@@ -272,7 +272,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_kk08c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xxtmf")
-max_value = 35.0
 step = 1.0
 value = 1.0
 show_percentage = false

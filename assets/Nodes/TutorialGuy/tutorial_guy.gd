@@ -19,11 +19,9 @@ func _process(delta: float) -> void:
 			is_Chatting = true
 	
 
-
 func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		playerInChatZone = true
-
 
 func _on_chat_detection_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):

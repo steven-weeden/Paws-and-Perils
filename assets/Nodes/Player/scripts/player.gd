@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 class_name player
 
+const walk_speed = 325
+
+@onready var animatedSprite = $AnimatedSprite2D
+
 @export var health = 40
-@export var current_health = 20
-@export var strength = 1
+@export var current_health = 40
+@export var strength = 5
 @export var agility = 1
 @export var defense = 1
 @export var crit_dmg = .25
@@ -21,8 +25,8 @@ var footstep_frames : Array = [1]
 
 var return_from_battle = false
 
-var speed = 325
-var player_state 
+var speed = walk_speed
+var player_state = "idle"
 var toggleLight = false
 var isResting = false
 
@@ -34,6 +38,9 @@ var battle = battleS.new()
 func _ready() -> void:
 	$PointLight2D.visible = false
 	verifySave(savePath)
+	player_state = "idle"
+	
+	
 
 func verifySave(path: String):
 	DirAccess.make_dir_absolute(path)
@@ -52,8 +59,6 @@ func saveData():
 func on_start_load():
 	self.position = playerData.savePos
 	self.current_health = playerData.saveHealth
-	$"CanvasLayer/ProgressBar".update()
-	$"CanvasLayer/TextureProgressBar".update()
 	
 	for i in range(playerData.slots.size()):
 		if playerData.slots[i] == null:
@@ -88,25 +93,25 @@ func _physics_process(delta):
 	
 func play_anim(dir):
 	if player_state == "idle":
-		$AnimatedSprite2D.play("idle")
+		animatedSprite.play("idle")
 	if player_state == "walking":
 		if dir.y == -1:
-			$AnimatedSprite2D.play("n_walk")
+			animatedSprite.play("n_walk")
 		if dir.y == 1:
-			$AnimatedSprite2D.play("s_walk")
+			animatedSprite.play("s_walk")
 		if dir.x == -1:
-			$AnimatedSprite2D.play("w_walk")
+			animatedSprite.play("w_walk")
 		if dir.x == 1:
-			$AnimatedSprite2D.play("e_walk")
+			animatedSprite.play("e_walk")
 		
 		if dir.x > 0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("ne_walk")
+			animatedSprite.play("ne_walk")
 		if dir.x > 0.5 and dir.y > 0.5:
-			$AnimatedSprite2D.play("se_walk")
+			animatedSprite.play("se_walk")
 		if dir.x < -0.5 and dir.y > 0.5:
-			$AnimatedSprite2D.play("sw_walk")
+			animatedSprite.play("sw_walk")
 		if dir.x < -0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("nw_walk")		
+			animatedSprite.play("nw_walk")		
 
 func load_sfx(sfx_to_load):
 	if $sfx_player.stream != sfx_to_load:
@@ -154,6 +159,9 @@ func _on_static_body_2d_player_is_resting() -> void:
 	await get_tree().create_timer(1.5).timeout
 	$"transition/AnimationPlayer".play("TransOut")
 	self.current_health = health
-	$"CanvasLayer/ProgressBar".update()
-	$"CanvasLayer/TextureProgressBar".update()
-	speed = 150
+	speed = walk_speed
+
+
+func _on_world_update() -> void:
+	$"UILayer/ProgressBar".update()
+	$"UILayer/TextureProgressBar".update()

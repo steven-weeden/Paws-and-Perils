@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
 [ext_resource type="PackedScene" uid="uid://fjifxix5o4db" path="res://src/battle.tscn" id="14_imb5n"]
-[ext_resource type="PackedScene" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
+[ext_resource type="PackedScene" uid="uid://d2jleumpgreta" path="res://assets/Nodes/Player/rest.tscn" id="14_ovsjv"]
 
 [node name="World" type="Node2D"]
 z_index = 22
@@ -26,18 +26,8 @@ script = ExtResource("1_vigrb")
 z_index = 1
 position = Vector2(962, 538)
 
-[node name="NewAlleyIntro" parent="." instance=ExtResource("3_2rc1p")]
+[node name="Map1City" parent="." instance=ExtResource("3_2rc1p")]
 position = Vector2(1409, 574)
-scale = Vector2(5, 5)
-
-[node name="tutorialGuy" parent="." instance=ExtResource("3_xviv1")]
-z_index = 1
-position = Vector2(1525, 267)
-scale = Vector2(3, 3)
-
-[node name="npc" parent="." instance=ExtResource("4_uptrf")]
-z_index = 1
-position = Vector2(1865, -329)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
@@ -45,49 +35,77 @@ z_index = 2
 position = Vector2(-3812, -4897)
 scale = Vector2(3.14942, 3.88694)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="NPCs" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_l41qg")]
+[node name="NPC(uni)" parent="NPCs" instance=ExtResource("4_uptrf")]
+z_index = 1
+position = Vector2(1865, -329)
+scale = Vector2(5, 5)
 
-[node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
+[node name="NPC(bird)" parent="NPCs" instance=ExtResource("7_dblty")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(1934, 608)
 scale = Vector2(7.48, 7.48)
 
-[node name="NPC(lime)" parent="." instance=ExtResource("8_yqmt7")]
+[node name="NPC(lime)" parent="NPCs" instance=ExtResource("8_yqmt7")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(1473, 409)
 scale = Vector2(3, 3)
 
-[node name="NPC(snow)" parent="." instance=ExtResource("9_vsbm7")]
-z_index = 2
+[node name="NPC(snow)" parent="NPCs" instance=ExtResource("9_vsbm7")]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(1692, 400)
 scale = Vector2(4.2, 4.2)
 
-[node name="NPC(rat)" parent="." instance=ExtResource("10_ofdu6")]
+[node name="NPC(rat)" parent="NPCs" instance=ExtResource("10_ofdu6")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(2004, -125)
 scale = Vector2(5, 5)
 
-[node name="buger" parent="." instance=ExtResource("11_cir3b")]
-z_index = 3
-position = Vector2(546, 417)
+[node name="NPC(goob)" parent="NPCs" instance=ExtResource("3_xviv1")]
+z_index = 1
+position = Vector2(1525, 267)
+scale = Vector2(3, 3)
 
-[node name="buger2" parent="." instance=ExtResource("11_cir3b")]
-z_index = 3
-position = Vector2(551, 533)
+[node name="CanvasLayer#PauseMenu" parent="." instance=ExtResource("6_l41qg")]
 
-[node name="milkJug" parent="." instance=ExtResource("12_ui5w7")]
-z_index = 3
-position = Vector2(678, 449)
+[node name="EscapeMenu" type="CanvasLayer" parent="."]
 
-[node name="sushi" parent="." instance=ExtResource("13_arlfp")]
+[node name="PauseMenu" parent="EscapeMenu" instance=ExtResource("6_l41qg")]
+
+[node name="Items" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="buger" parent="Items" instance=ExtResource("11_cir3b")]
 z_index = 3
-position = Vector2(661, 566)
+position = Vector2(1414, -203)
+scale = Vector2(3, 3)
+
+[node name="milkJug" parent="Items" instance=ExtResource("12_ui5w7")]
+z_index = 3
+position = Vector2(429, 264)
+scale = Vector2(3, 3)
+
+[node name="sushi" parent="Items" instance=ExtResource("13_arlfp")]
+z_index = 3
+position = Vector2(2085, 753)
+scale = Vector2(2, 2)
+
+[node name="buger2" parent="Items" instance=ExtResource("11_cir3b")]
+z_index = 3
+position = Vector2(-67, 259)
+scale = Vector2(3, 3)
+
+[node name="sushi2" parent="Items" instance=ExtResource("13_arlfp")]
+z_index = 3
+position = Vector2(2086, -450)
+scale = Vector2(2, 2)
 
 [node name="Battle" parent="." instance=ExtResource("14_imb5n")]
 
@@ -96,6 +114,7 @@ z_index = 1
 position = Vector2(1278, 117)
 scale = Vector2(8, 8)
 
-[connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
-[connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
+[connection signal="pause" from="." to="EscapeMenu/PauseMenu" method="_on_world_pause"]
+[connection signal="resume" from="." to="EscapeMenu/PauseMenu" method="_on_world_resume"]
+[connection signal="update" from="." to="player" method="_on_world_update"]
 [connection signal="playerIsResting" from="StaticBody2D" to="player" method="_on_static_body_2d_player_is_resting"]

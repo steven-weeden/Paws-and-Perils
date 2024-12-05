@@ -40,19 +40,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 # Triggered when the player exits the enemy area
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	playerInArea = false
-	
-# Called after the battle ends to delete the enemy
-func remove_enemy():
-	queue_free()  # Deletes the enemy node
-
-
-func _on_battle_battle_finished() -> void:
-	print("Signal Recieved")
-	defeated = 1
-	self.queue_free()
-
-func _on_battle_finished() -> void:
-	print("Signal Recieved")
-	defeated = 1
-	self.queue_free()
-	
