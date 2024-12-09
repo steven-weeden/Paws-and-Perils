@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://fjifxix5o4db"]
+[gd_scene load_steps=26 format=3 uid="uid://fjifxix5o4db"]
 
 [ext_resource type="Script" path="res://src/battle.gd" id="1_5hvih"]
 [ext_resource type="Resource" uid="uid://slf2xmhvvj8" path="res://src/alley_cat.tres" id="2_mjeis"]
@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://osv3yn45qavh" path="res://assets/environmentalSprites/Battle/fightbg.png" id="5_efgi0"]
 [ext_resource type="Texture2D" uid="uid://c17c3nax0c2ej" path="res://assets/environmentalSprites/Battle/elephant_enemy.png" id="6_l1k1n"]
 [ext_resource type="AudioStream" uid="uid://bm3dg7upatem2" path="res://assets/environmentalSprites/Battle/jump.wav" id="7_8cr4s"]
-[ext_resource type="AudioStream" uid="uid://dgvk65g67lveg" path="res://assets/Nodes/Sounds/assets/music/battleMusic.mp3" id="8_42k8t"]
 [ext_resource type="Script" path="res://src/inventory.gd" id="8_14qq2"]
+[ext_resource type="AudioStream" uid="uid://dgvk65g67lveg" path="res://assets/Nodes/Sounds/assets/music/battleMusic.mp3" id="8_42k8t"]
 [ext_resource type="PackedScene" uid="uid://cukm3nbmadj6s" path="res://assets/Nodes/Inventory/Scenes/inventory_ui.tscn" id="9_i7ot4"]
 [ext_resource type="Texture2D" uid="uid://dq4je8hvr4sii" path="res://assets/Nodes/Inventory/inventoryUIpng/background.png" id="10_kcyja"]
 [ext_resource type="PackedScene" uid="uid://o6uac5a0hvfv" path="res://assets/Nodes/Inventory/Scenes/inventory_slot.tscn" id="11_subb5"]
