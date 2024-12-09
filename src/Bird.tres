@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dtbmtt6sxbxgw"]
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://dtbmtt6sxbxgw"]
 
 [ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_5vug6"]
-[ext_resource type="Texture2D" uid="uid://barj0ye2ytnoi" path="res://assets/environmentalSprites/Battle/birdenemy.png" id="2_y6jdj"]
+[ext_resource type="Texture2D" uid="uid://b4tkj57u4xmgj" path="res://assets/environmentalSprites/Battle/EnemyBird.png" id="2_tq7mb"]
 
 [resource]
 script = ExtResource("1_5vug6")
 name = "Hawk Tua"
-texture = ExtResource("2_y6jdj")
+texture = ExtResource("2_tq7mb")
 health = 20
 damage = 3
 agility = 1

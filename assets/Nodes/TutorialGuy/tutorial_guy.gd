@@ -4,6 +4,8 @@ var currentState = IDLE
 var is_Chatting = false
 var player
 var playerInChatZone = false
+signal goobSlain
+signal playerRest
 
 enum{
 	IDLE
@@ -30,3 +32,11 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 
 func _on_dialog_ui_dialog_finished():
 	is_Chatting = false
+
+
+func _on_battle_goob_slain() -> void:
+	emit_signal("goobSlain")
+
+
+func _on_static_body_2d_player_is_resting() -> void:
+	emit_signal("playerRest")

@@ -21,6 +21,7 @@ script = ExtResource("1_wwfxx")
 layout_mode = 2
 text = "Level"
 max_length = 11
+editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 
@@ -34,10 +35,18 @@ text = "1
 "
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/level"]
+modulate = Color(0, 0, 0, 0.219608)
+z_index = -1
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 30.0
+
 [node name="health" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Health"
 max_length = 11
+editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 
@@ -50,9 +59,17 @@ offset_bottom = 27.0
 text = "10"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/health"]
+modulate = Color(0, 0, 0, 0.219608)
+z_index = -1
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 30.0
+
 [node name="strength" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Strength"
+editable = false
 
 [node name="Label" type="Label" parent="BoxContainer/strength"]
 layout_mode = 0
@@ -63,9 +80,17 @@ offset_bottom = 26.0
 text = "1"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/strength"]
+modulate = Color(0, 0, 0, 0.219608)
+z_index = -1
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 30.0
+
 [node name="agility" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Agility"
+editable = false
 
 [node name="Label" type="Label" parent="BoxContainer/agility"]
 layout_mode = 0
@@ -76,9 +101,17 @@ offset_bottom = 25.0
 text = "1"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/agility"]
+modulate = Color(0, 0, 0, 0.219608)
+z_index = -1
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 30.0
+
 [node name="defense" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Defense"
+editable = false
 
 [node name="Label" type="Label" parent="BoxContainer/defense"]
 layout_mode = 0
@@ -89,10 +122,18 @@ offset_bottom = 25.0
 text = "1"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/defense"]
+modulate = Color(0, 0, 0, 0.219608)
+z_index = -1
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 30.0
+
 [node name="crit_dmg" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 text = "Crit Damage"
 max_length = 11
+editable = false
 
 [node name="Label" type="Label" parent="BoxContainer/crit_dmg"]
 layout_mode = 0
@@ -102,3 +143,10 @@ offset_right = 179.0
 offset_bottom = 25.0
 text = "1.0"
 horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="BoxContainer/crit_dmg"]
+modulate = Color(0, 0, 0, 0.219608)
+z_index = -1
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 30.0

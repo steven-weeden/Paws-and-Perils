@@ -2,6 +2,7 @@ class_name Quest extends QuestManager
 
 func start_quest() -> void:
 	if quest_status == QuestStatus.available:
+		Global.quest_status = 1
 		print(quest_status)
 		quest_status = QuestStatus.started
 		print(quest_status)
@@ -11,14 +12,19 @@ func start_quest() -> void:
 	
 func reached_goal() -> void: 
 	if quest_status == QuestStatus.started:
+		Global.quest_status = 2
 		quest_status = QuestStatus.reached_goal
 		QuestDescription.text = reached_goal_text
 		print("Quest Goal Achieved")
 
 func finished_quest() -> void:
 	if quest_status == QuestStatus.reached_goal:
+		Global.quest_status = 3
 		quest_status = QuestStatus.finished
 		QuestTitle.text = "No Quest Currently."
 		QuestDescription.text = "Come Back Later!"
 		#if we're using xp or money, insert it here
 		print("Quest Completed!")
+		
+func set_quest_name() -> void:
+	QuestTitle.text = quest_name

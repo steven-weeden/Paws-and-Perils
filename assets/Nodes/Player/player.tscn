@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cp3ej5bmd80dh"]
+[gd_scene load_steps=45 format=3 uid="uid://cp3ej5bmd80dh"]
 
 [ext_resource type="Texture2D" uid="uid://bq53spa2fmqdo" path="res://assets/Sprites/characterSprites/cat.png" id="1_3k1jf"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/player.gd" id="1_crmlk"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bbn5s8di8ecte" path="res://assets/Nodes/QuestBar/quest_bar.tscn" id="7_ylqeu"]
 [ext_resource type="Texture2D" uid="uid://byeujqbqmpeal" path="res://assets/Sprites/characterSprites/healthbarProgress.png" id="8_4sfst"]
 [ext_resource type="Script" path="res://assets/Nodes/Player/scripts/health_bar_texture.gd" id="9_jhpky"]
+[ext_resource type="PackedScene" uid="uid://cgrhc33c58ckt" path="res://assets/Nodes/Player/transition.tscn" id="14_wwih2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct8fr"]
 atlas = ExtResource("1_3k1jf")
@@ -349,19 +350,16 @@ script = ExtResource("7_36hl3")
 player_h_bar = NodePath("../..")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UILayer/ProgressBar"]
-visible = false
 layout_mode = 0
 offset_right = 314.0
 offset_bottom = 38.0
 alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/ProgressBar/HBoxContainer"]
-visible = false
 layout_mode = 2
 text = "40"
 
 [node name="Label2" type="Label" parent="UILayer/ProgressBar/HBoxContainer"]
-visible = false
 layout_mode = 2
 text = "/ 40"
 
@@ -423,5 +421,8 @@ range_z_max = 1000
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
 attenuation = 362.039
+
+[node name="transition" parent="." instance=ExtResource("14_wwih2")]
+layer = 2
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

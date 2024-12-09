@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://bax0ri5tycrta"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_rx272"]
+[ext_resource type="Texture2D" uid="uid://bkxk0ccm1x4e6" path="res://assets/Sprites/npcSprites/EnemyGorn.png" id="2_4sdi5"]
+
+[resource]
+script = ExtResource("1_rx272")
+name = "Goornelius"
+texture = ExtResource("2_4sdi5")
+health = 10
+damage = 1
+agility = 2
+defense = 3
+crit = 0.25
+EXPDefeat = 10
+GoldDefeat = 10

@@ -6,7 +6,6 @@ signal load
 func _ready() -> void:
 	get_tree().paused = false
 	$Panel.visible = false
-	var position = $pos
 	
 func resume():
 	get_tree().paused = false
@@ -38,3 +37,9 @@ func _on_quit_pressed() -> void:
 
 func _process(delta: float) -> void:
 	escape()
+
+func _on_world_pause() -> void:
+	pause()
+
+func _on_world_resume() -> void:
+	resume()

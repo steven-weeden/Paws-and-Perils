@@ -1,0 +1,94 @@
+[gd_scene load_steps=16 format=3 uid="uid://iitjqkjxstfu"]
+
+[ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
+[ext_resource type="Script" path="res://assets/Scenes/game_scene.gd" id="1_vigrb"]
+[ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_2rc1p"]
+[ext_resource type="PackedScene" uid="uid://b41nj411bgfcu" path="res://assets/Nodes/TutorialGuy/tutorial_guy.tscn" id="3_xviv1"]
+[ext_resource type="PackedScene" uid="uid://b451xioc6dgje" path="res://assets/Nodes/NPC/npc.tscn" id="4_uptrf"]
+[ext_resource type="PackedScene" uid="uid://cw45vfupx3l8d" path="res://assets/Nodes/WeatherSystem/weather_control.tscn" id="5_0j2t6"]
+[ext_resource type="PackedScene" uid="uid://bnhp2ledt8yb7" path="res://assets/Nodes/Menu/Pause/pause_menu.tscn" id="6_l41qg"]
+[ext_resource type="PackedScene" uid="uid://1d2cnxjtrppa" path="res://assets/Nodes/NPC/npc(bird).tscn" id="7_dblty"]
+[ext_resource type="PackedScene" uid="uid://cx666y67r5sbs" path="res://assets/Nodes/NPC/npc_2.tscn" id="8_yqmt7"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
+[ext_resource type="PackedScene" uid="uid://c7c17ler66tmj" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
+[ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
+[ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
+[ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
+[ext_resource type="PackedScene" uid="uid://cck8xu301jnty" path="res://battle.tscn" id="14_imb5n"]
+
+[node name="World" type="Node2D"]
+z_index = 22
+y_sort_enabled = true
+script = ExtResource("1_vigrb")
+
+[node name="player" parent="." instance=ExtResource("1_s15fd")]
+z_index = 1
+position = Vector2(962, 538)
+
+[node name="NewAlleyIntro" parent="." instance=ExtResource("3_2rc1p")]
+position = Vector2(1409, 574)
+scale = Vector2(5, 5)
+
+[node name="tutorialGuy" parent="." instance=ExtResource("3_xviv1")]
+z_index = 1
+position = Vector2(1525, 267)
+scale = Vector2(3, 3)
+
+[node name="npc" parent="." instance=ExtResource("4_uptrf")]
+z_index = 1
+position = Vector2(1865, -329)
+scale = Vector2(5, 5)
+
+[node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
+z_index = 2
+position = Vector2(-3812, -4897)
+scale = Vector2(3.14942, 3.88694)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_l41qg")]
+
+[node name="NPC(bird)" parent="." instance=ExtResource("7_dblty")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1934, 608)
+scale = Vector2(7.48, 7.48)
+
+[node name="NPC(lime)" parent="." instance=ExtResource("8_yqmt7")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1473, 409)
+scale = Vector2(3, 3)
+
+[node name="NPC(snow)" parent="." instance=ExtResource("9_vsbm7")]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(1692, 400)
+scale = Vector2(4.2, 4.2)
+
+[node name="NPC(rat)" parent="." instance=ExtResource("10_ofdu6")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(2004, -125)
+scale = Vector2(5, 5)
+
+[node name="buger" parent="." instance=ExtResource("11_cir3b")]
+z_index = 3
+position = Vector2(546, 417)
+
+[node name="buger2" parent="." instance=ExtResource("11_cir3b")]
+z_index = 3
+position = Vector2(551, 533)
+
+[node name="milkJug" parent="." instance=ExtResource("12_ui5w7")]
+z_index = 3
+position = Vector2(678, 449)
+
+[node name="sushi" parent="." instance=ExtResource("13_arlfp")]
+z_index = 3
+position = Vector2(661, 566)
+
+[node name="Battle" parent="." instance=ExtResource("14_imb5n")]
+
+[connection signal="load" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_load"]
+[connection signal="save" from="CanvasLayer/PauseMenu" to="player" method="_on_pause_menu_save"]
