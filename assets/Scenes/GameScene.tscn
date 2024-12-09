@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://iitjqkjxstfu"]
+[gd_scene load_steps=19 format=3 uid="uid://iitjqkjxstfu"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="Script" path="res://assets/Scenes/game_scene.gd" id="1_vigrb"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cx666y67r5sbs" path="res://assets/Nodes/NPC/npc_2.tscn" id="8_yqmt7"]
 [ext_resource type="PackedScene" uid="uid://dl2oa06utsnih" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
 [ext_resource type="PackedScene" uid="uid://c7c17ler66tmj" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
+[ext_resource type="PackedScene" uid="uid://b5341efbpmjk" path="res://assets/Nodes/NPC/freddy.tscn" id="11_1c4ec"]
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
 [ext_resource type="PackedScene" uid="uid://dntwvin01w4l0" path="res://assets/Nodes/Inventory/Scenes/sushi.tscn" id="13_arlfp"]
@@ -32,7 +33,6 @@ position = Vector2(1409, 574)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
-visible = false
 z_index = 2
 position = Vector2(-3812, -4897)
 scale = Vector2(3.14942, 3.88694)
@@ -76,6 +76,11 @@ scale = Vector2(5, 5)
 z_index = 1
 position = Vector2(1525, 267)
 scale = Vector2(3, 3)
+
+[node name="Freddy" parent="NPCs" instance=ExtResource("11_1c4ec")]
+z_index = 2
+position = Vector2(-23311, 3001)
+scale = Vector2(4, 4)
 
 [node name="CanvasLayer#PauseMenu" parent="." instance=ExtResource("6_l41qg")]
 

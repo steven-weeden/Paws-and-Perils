@@ -14,6 +14,7 @@ signal textbox_closed
 @onready var uni_res: Resource = preload("res://src/Uni.tres")
 @onready var lime_res: Resource = preload("res://src/Lime.tres")
 @onready var snow_res: Resource = preload("res://src/Snow.tres")
+@onready var freddy_res: Resource = preload("res://src/Freddy.tres")
 @onready var battle_music: AudioStreamPlayer = $battle_music
 @onready var players: player = $"../player"
 
@@ -51,6 +52,9 @@ func _ready():
 	elif Global.cat_fight3 == true:
 		enemy = snow_res
 		Global.cat_fight3 = false
+	elif Global.freddy_fight == true:
+		enemy = freddy_res
+		Global.freddy_fight = false
 		
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health

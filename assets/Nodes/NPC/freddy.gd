@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name rat
-
 var playerInArea = false
 @onready var game_scene = get_node("/root/World")
 @onready var battle = get_node("/root/World/Battle")
@@ -10,15 +8,19 @@ var battle_started = false  # Tracks if the battle has started
 var path = "res://src/Rat.tres"
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("Idle")
+	$AnimatedSprite2D.play("idle")
+	$PointLight2D2.visible = false
+	$PointLight2D3.visible = false
 	#battles.connect("battle_finished", Callable(self, "_on_battle_finished"))
 	#battle.connect("battle_finished", Callable(self, "_on_battle_finished"))
 
 func _process(delta: float) -> void:
 	if playerInArea:
-		$AnimatedSprite2D.play("Alarmed")
+		$AnimatedSprite2D.play("alert")
+		$PointLight2D2.visible = true
+		$PointLight2D3.visible = true
 		if Input.is_action_just_pressed("interact"):
-			Global.rat_fight = true
+			Global.freddy_fight = true
 			game_scene.start_battle(self)  # Pass this enemy node to be removed
 			
 			
@@ -32,4 +34,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	playerInArea = false
 	await get_tree().create_timer(1.5).timeout
-	$AnimatedSprite2D.play("Idle")
+	$PointLight2D2.visible = false
+	$PointLight2D3.visible = false
+	$AnimatedSprite2D.play("idle")

@@ -15,6 +15,7 @@ var bird_fight: bool = false
 var cat_fight1: bool = false
 var cat_fight2: bool = false
 var cat_fight3: bool = false
+var freddy_fight: bool = false
 
 var current_quest = 0
 

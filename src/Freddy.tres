@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://brjw1pdoels"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_ynql8"]
+[ext_resource type="Texture2D" uid="uid://dhamst803a5mk" path="res://assets/Sprites/npcSprites/fredbeardark.png" id="2_e3p15"]
+
+[resource]
+script = ExtResource("1_ynql8")
+name = "Freddy Fuzzbear"
+texture = ExtResource("2_e3p15")
+health = 999999
+damage = 1
+agility = 999
+defense = 999
+crit = 0.25
+EXPDefeat = 9999999
+GoldDefeat = 9999999

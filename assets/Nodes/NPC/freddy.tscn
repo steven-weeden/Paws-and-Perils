@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5341efbpmjk"]
+
+[ext_resource type="Texture2D" uid="uid://c2ibyy1j2girl" path="res://assets/Sprites/npcSprites/freddyworld.png" id="1_2d67r"]
+[ext_resource type="Script" path="res://assets/Nodes/NPC/freddy.gd" id="1_vtypv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgamd"]
+atlas = ExtResource("1_2d67r")
+region = Rect2(222, 22, 41, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kkre"]
+atlas = ExtResource("1_2d67r")
+region = Rect2(58, 22, 41, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2jgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgamd")
+}],
+"loop": true,
+"name": &"alert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kkre")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew51w"]
+size = Vector2(31, 49)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4s054"]
+radius = 36.0
+
+[sub_resource type="Gradient" id="Gradient_sh4gk"]
+offsets = PackedFloat32Array(0, 0.720779)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eje7j"]
+gradient = SubResource("Gradient_sh4gk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_vtypv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -9)
+sprite_frames = SubResource("SpriteFrames_t2jgp")
+animation = &"alert"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_ew51w")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(2, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_4s054")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(7, -13)
+scale = Vector2(0.234375, 0.34375)
+energy = 5.0
+texture = SubResource("GradientTexture2D_eje7j")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(3, -13)
+scale = Vector2(0.234375, 0.34375)
+energy = 5.0
+texture = SubResource("GradientTexture2D_eje7j")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

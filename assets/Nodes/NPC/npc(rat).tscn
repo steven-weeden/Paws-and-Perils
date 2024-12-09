@@ -77,8 +77,7 @@ script = ExtResource("1_sy24x")
 position = Vector2(0, -3)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_edxuc")
-animation = &"Alarmed"
-frame_progress = 0.430726
+animation = &"Idle"
 
 [node name="Area2D" type="Area2D" parent="."]
 
