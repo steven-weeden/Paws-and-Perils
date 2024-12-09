@@ -13,3 +13,12 @@ var goob_fight: bool = false
 var current_quest = 0
 
 var health = 0
+
+var picked_up_items = {}
+
+func is_item_picked_up(item_id: String) -> bool:
+	print(picked_up_items)
+	return picked_up_items.get(item_id, false)
+
+func mark_item_picked_up(item_id: String):
+	picked_up_items[item_id] = true

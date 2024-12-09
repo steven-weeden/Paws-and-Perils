@@ -10,10 +10,11 @@ var player = null
 
 var picked_up = false
 
+@export var item_id: String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if picked_up == true:
-		queue_free()
+	if Global.is_item_picked_up(item_id):
+		queue_free() 
 		
 
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 func _process(_delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("interact"):
+			Global.mark_item_picked_up(item_id)
 			player.collect(item)
 			picked_up = true
 			$AnimationPlayer.play("fade")

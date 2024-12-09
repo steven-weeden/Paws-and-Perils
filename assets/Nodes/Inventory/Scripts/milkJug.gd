@@ -8,15 +8,18 @@ var buger = preload("res://assets/Nodes/Inventory/godotItems/milkJug.tres")
 
 var player = null
 
+@export var item_id: String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.e
+	if Global.is_item_picked_up(item_id):
+		queue_free() 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("interact"):
+			Global.mark_item_picked_up(item_id)
 			player.collect(item)
 			$AnimationPlayer.play("fade")
 			$AudioStreamPlayer2D.play()

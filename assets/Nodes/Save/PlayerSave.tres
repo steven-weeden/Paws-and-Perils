@@ -7,3 +7,4 @@
 script = ExtResource("2_du75u")
 savePos = Vector2(717.421, 355.921)
 slots = Array[ExtResource("2_8uecl")]([])
+saveHealth = 0
