@@ -9,26 +9,16 @@ var playerInArea = false
 var battle_started = false  # Tracks if the battle has started
 var path = "res://src/Rat.tres"
 
-signal rat_battle
-
-
-var defeated = 0
-
 func _ready() -> void:
 	$AnimatedSprite2D.play("Idle")
 	#battles.connect("battle_finished", Callable(self, "_on_battle_finished"))
 	#battle.connect("battle_finished", Callable(self, "_on_battle_finished"))
 
 func _process(delta: float) -> void:
-	if Global.battle_finished == true:
-		print("Q FREE")
-		self.queue_free()
 	if playerInArea:
-		if Global.battle_finished == false:
-			if Input.is_action_just_pressed("interact"):
-				emit_signal("rat_battle")
-				defeated = 1
-				game_scene.start_battle(self)  # Pass this enemy node to be removed
+		if Input.is_action_just_pressed("interact"):
+			Global.rat_fight = true
+			game_scene.start_battle(self)  # Pass this enemy node to be removed
 			
 			
 

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://dtf1vftph0wvd"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_snxen"]
+[ext_resource type="Texture2D" uid="uid://bd026np0dkqkb" path="res://assets/Sprites/npcSprites/EnemySnow.png" id="2_qpo1l"]
+
+[resource]
+script = ExtResource("1_snxen")
+name = "Snow"
+texture = ExtResource("2_qpo1l")
+health = 20
+damage = 3
+agility = 1
+defense = 1
+crit = 0.15
+EXPDefeat = 5
+GoldDefeat = 3

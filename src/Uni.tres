@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://b1kurdoml8fpr"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_28k6k"]
+[ext_resource type="Texture2D" uid="uid://cc0u630npvvrn" path="res://assets/Sprites/npcSprites/EnemyUNI.png" id="2_ikvpi"]
+
+[resource]
+script = ExtResource("1_28k6k")
+name = "Uni"
+texture = ExtResource("2_ikvpi")
+health = 999
+damage = 1
+agility = 999
+defense = 999
+crit = 0.25
+EXPDefeat = 1
+GoldDefeat = 1

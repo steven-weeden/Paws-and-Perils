@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=3 format=3 uid="uid://mo8jhmptc3gi"]
+
+[ext_resource type="Script" path="res://src/BaseEnemy.gd" id="1_cgumb"]
+[ext_resource type="Texture2D" uid="uid://ch6valqd8afi4" path="res://assets/Sprites/npcSprites/EnemyLime.png" id="2_7eeon"]
+
+[resource]
+script = ExtResource("1_cgumb")
+name = "Lime"
+texture = ExtResource("2_7eeon")
+health = 20
+damage = 3
+agility = 1
+defense = 1
+crit = 0.15
+EXPDefeat = 5
+GoldDefeat = 3

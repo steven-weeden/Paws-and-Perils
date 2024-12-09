@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cx666y67r5sbs"]
+[gd_scene load_steps=21 format=3 uid="uid://cx666y67r5sbs"]
 
 [ext_resource type="Texture2D" uid="uid://bha33b4vktelt" path="res://assets/Nodes/NPC/Sprites/cat2.png" id="1_mhw3c"]
 [ext_resource type="Script" path="res://assets/Nodes/NPC/npc.gd" id="1_wtkyv"]
@@ -152,7 +152,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vra2"]
-radius = 15.0
+radius = 10.0499
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5n25t"]
+radius = 23.0
 
 [node name="npc2" type="CharacterBody2D"]
 script = ExtResource("1_wtkyv")
@@ -162,10 +165,18 @@ sprite_frames = SubResource("SpriteFrames_thmyn")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_8vra2")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_5n25t")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

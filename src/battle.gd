@@ -8,12 +8,16 @@ signal textbox_closed
 @export var enemy: Resource
 @export var battle_finished: bool = false
 @onready var rats = rat.new()
+@onready var bird_res: Resource = preload("res://src/Bird.tres")
 @onready var rat_res: Resource = preload("res://src/Rat.tres")
 @onready var goob_res: Resource = preload("res://src/Goorn.tres")
+@onready var uni_res: Resource = preload("res://src/Uni.tres")
+@onready var lime_res: Resource = preload("res://src/Lime.tres")
+@onready var snow_res: Resource = preload("res://src/Snow.tres")
 @onready var battle_music: AudioStreamPlayer = $battle_music
 @onready var players: player = $"../player"
 
-
+var bird = false
 var current_player_health = 0
 var current_enemy_health = 0
 var is_defending = false
@@ -21,6 +25,7 @@ var chance = 0
 var rand = 0
 var enm_choice
 var goob_battle: bool = false
+var enemy_num
 
 
 func _ready():
@@ -28,13 +33,24 @@ func _ready():
 		battle_music.play()
 		Global.battle_start = false
 	
-		
-	rats.connect("rat_battle", Callable(self, "rat_batt"))
 	if Global.goob_fight == true:
 		enemy = goob_res
 		Global.goob_fight = false
-	elif rat_batt():
+	elif Global.rat_fight == true:
 		enemy = rat_res
+		Global.rat_fight = false
+	elif Global.bird_fight == true:
+		enemy = bird_res
+		Global.bird_fight = false
+	elif Global.cat_fight1 == true:
+		enemy = uni_res
+		Global.cat_fight1 = false
+	elif Global.cat_fight2 == true:
+		enemy = lime_res
+		Global.cat_fight2 = false
+	elif Global.cat_fight3 == true:
+		enemy = snow_res
+		Global.cat_fight3 = false
 		
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health
@@ -280,10 +296,6 @@ func def_check(def_check) -> bool:
 	else:
 		def_check = false
 		return def_check
-	
-func rat_batt() -> bool:
-	return true
-
 
 func _on_world_goob_battle() -> void:
 	goob_battle = true

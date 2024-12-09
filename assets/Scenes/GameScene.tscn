@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bnhp2ledt8yb7" path="res://assets/Nodes/Menu/Pause/pause_menu.tscn" id="6_l41qg"]
 [ext_resource type="PackedScene" uid="uid://1d2cnxjtrppa" path="res://assets/Nodes/NPC/npc(bird).tscn" id="7_dblty"]
 [ext_resource type="PackedScene" uid="uid://cx666y67r5sbs" path="res://assets/Nodes/NPC/npc_2.tscn" id="8_yqmt7"]
-[ext_resource type="PackedScene" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
+[ext_resource type="PackedScene" uid="uid://dl2oa06utsnih" path="res://assets/Nodes/NPC/npc(snow).tscn" id="9_vsbm7"]
 [ext_resource type="PackedScene" uid="uid://c7c17ler66tmj" path="res://assets/Nodes/NPC/npc(rat).tscn" id="10_ofdu6"]
 [ext_resource type="PackedScene" uid="uid://c2om5fnbu55ox" path="res://assets/Nodes/Inventory/Scenes/buger.tscn" id="11_cir3b"]
 [ext_resource type="PackedScene" uid="uid://4jwfob330135" path="res://assets/Nodes/Inventory/Scenes/milkJug.tscn" id="12_ui5w7"]
@@ -32,6 +32,7 @@ position = Vector2(1409, 574)
 scale = Vector2(5, 5)
 
 [node name="weatherControl" parent="." instance=ExtResource("5_0j2t6")]
+visible = false
 z_index = 2
 position = Vector2(-3812, -4897)
 scale = Vector2(3.14942, 3.88694)
@@ -43,6 +44,7 @@ y_sort_enabled = true
 z_index = 1
 position = Vector2(1865, -329)
 scale = Vector2(5, 5)
+cat_id = 1
 
 [node name="NPC(bird)" parent="NPCs" instance=ExtResource("7_dblty")]
 z_index = 1
@@ -55,12 +57,14 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(1473, 409)
 scale = Vector2(3, 3)
+cat_id = 2
 
 [node name="NPC(snow)" parent="NPCs" instance=ExtResource("9_vsbm7")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(1692, 400)
 scale = Vector2(4.2, 4.2)
+cat_id = 3
 
 [node name="NPC(rat)" parent="NPCs" instance=ExtResource("10_ofdu6")]
 z_index = 1
