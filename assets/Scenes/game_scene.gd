@@ -35,7 +35,8 @@ func _process(delta: float) -> void:
 func start_battle(enemy_node: Node):
 	# Save player position and transition to the battle scene
 	State.player_position = player.position
-	State.current_health = player.current_health
+	#State.current_health = player.current_health
+	Global.health = player.current_health
 	player.saveData()
 	print("SAVING DATA")
 	Global.battle_start = true

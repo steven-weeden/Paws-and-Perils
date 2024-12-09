@@ -38,8 +38,7 @@ func _ready():
 		
 	current_player_health = State.current_health
 	current_enemy_health = enemy.health
-	
-	Global.health = current_player_health
+	current_player_health = Global.health
 		
 	set_health($EnemyContainer/ProgressBar, enemy.health, enemy.health)
 	set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, State.max_health)
@@ -143,8 +142,9 @@ func _on_run_pressed() -> void:
 	display_text("Got away safely!")
 	await display_text_and_wait("Got away safely!")
 	await(get_tree().create_timer(0.5))
+	#Global.battle_finished = true
 	Global.return_from_battle = true
-	Global.health = current_player_health
+	current_player_health = Global.health
 	print("PLAYER HEALTH", current_player_health)
 	get_tree().change_scene_to_file("res://assets/Scenes/GameScene.tscn")
 	print("Battle Finished")

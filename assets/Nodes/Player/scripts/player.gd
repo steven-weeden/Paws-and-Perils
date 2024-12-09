@@ -7,7 +7,7 @@ const walk_speed = 325
 @onready var animatedSprite = $AnimatedSprite2D
 
 @export var health = 40
-@export var current_health = 40
+@export var current_health = 20
 @export var strength = 5
 @export var agility = 1
 @export var defense = 1
@@ -159,6 +159,7 @@ func _on_static_body_2d_player_is_resting() -> void:
 	await get_tree().create_timer(1.5).timeout
 	$"transition/AnimationPlayer".play("TransOut")
 	self.current_health = health
+	Global.health = self.current_health
 	speed = walk_speed
 
 
