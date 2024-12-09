@@ -221,8 +221,9 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_kk08c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xxtmf")
+max_value = 1e+06
 step = 1.0
-value = 50.0
+value = 10.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="EnemyContainer/ProgressBar"]
@@ -415,10 +416,14 @@ script = ExtResource("8_14qq2")
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 85.0
-offset_bottom = 43.0
+offset_left = 144.5
+offset_top = 39.2495
+offset_right = 229.5
+offset_bottom = 82.2495
 grow_horizontal = 1
 grow_vertical = 1
+rotation = -1.57096
+scale = Vector2(1.75, 1.75)
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="Inventory/InventoryUI"]
 custom_minimum_size = Vector2(85, 43)

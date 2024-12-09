@@ -3,6 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://iitjqkjxstfu" path="res://assets/Scenes/GameScene.tscn" id="1_ke7ta"]
 
 [node name="World" instance=ExtResource("1_ke7ta")]
-
-[node name="NPC(snow)" parent="NPCs" index="3"]
-z_index = 1

@@ -263,6 +263,7 @@ func show_results_screen():
 	results_screen.show_screen()
 
 func show_death_screen():
+	battle_music.stop()
 	var death_scene = preload("res://src/death_screen.tscn")
 	var death_screen = death_scene.instantiate()
 	
