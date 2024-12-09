@@ -3,6 +3,7 @@ extends Node2D
 var player_in_area = false
 
 @export var item: inventoryItem
+@export var health_boost: int = 20
 
 var buger = preload("res://assets/Nodes/Inventory/godotItems/tuna.tres")
 
@@ -34,3 +35,10 @@ func _on_pickable_area_body_entered(body):
 func _on_pickable_area_body_exited(body):
 	if body.has_method("player"):
 		player_in_area = false
+
+func apply_effect():
+	if player.has_method("increase_health"):
+		player.increase_health(health_boost)
+		print("Health increased by %d" % health_boost)
+	else:
+		print("Player does not have 'increase_health' method!")

@@ -7,7 +7,7 @@ const walk_speed = 325
 @onready var animatedSprite = $AnimatedSprite2D
 
 @export var health = 40
-@export var current_health = 20
+@export var current_health = 40
 @export var strength = 5
 @export var agility = 1
 @export var defense = 1
