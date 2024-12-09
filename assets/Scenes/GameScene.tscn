@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cp3ej5bmd80dh" path="res://assets/Nodes/Player/player.tscn" id="1_s15fd"]
 [ext_resource type="Script" path="res://assets/Scenes/game_scene.gd" id="1_vigrb"]
-[ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_j8kqk"]
+[ext_resource type="PackedScene" uid="uid://d0hhi0yyb61e5" path="res://assets/Nodes/Maps1/new_alley_intro.tscn" id="3_82uhe"]
 [ext_resource type="PackedScene" uid="uid://b41nj411bgfcu" path="res://assets/Nodes/TutorialGuy/tutorial_guy.tscn" id="3_xviv1"]
 [ext_resource type="PackedScene" uid="uid://b451xioc6dgje" path="res://assets/Nodes/NPC/npc.tscn" id="4_uptrf"]
 [ext_resource type="PackedScene" uid="uid://cw45vfupx3l8d" path="res://assets/Nodes/WeatherSystem/weather_control.tscn" id="5_0j2t6"]
@@ -28,7 +28,7 @@ script = ExtResource("1_vigrb")
 z_index = 1
 position = Vector2(962, 538)
 
-[node name="NewAlleyIntro" parent="." instance=ExtResource("3_j8kqk")]
+[node name="NewAlleyIntro2" parent="." instance=ExtResource("3_82uhe")]
 position = Vector2(1409, 574)
 scale = Vector2(5, 5)
 
