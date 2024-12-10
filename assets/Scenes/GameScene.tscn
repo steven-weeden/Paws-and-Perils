@@ -42,28 +42,28 @@ y_sort_enabled = true
 
 [node name="NPC(uni)" parent="NPCs" instance=ExtResource("4_uptrf")]
 z_index = 1
-position = Vector2(1865, -329)
+position = Vector2(-947, -2155)
 scale = Vector2(5, 5)
 cat_id = 1
 
 [node name="NPC(bird)" parent="NPCs" instance=ExtResource("7_dblty")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(1934, 608)
+position = Vector2(-864, -162)
 scale = Vector2(7.48, 7.48)
 enemy_id = 5
 
 [node name="NPC(lime)" parent="NPCs" instance=ExtResource("8_yqmt7")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(1473, 409)
+position = Vector2(9009, 1573)
 scale = Vector2(3, 3)
 cat_id = 2
 
 [node name="NPC(snow)" parent="NPCs" instance=ExtResource("9_vsbm7")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(1692, 400)
+position = Vector2(2277, 1517)
 scale = Vector2(4.2, 4.2)
 cat_id = 3
 
