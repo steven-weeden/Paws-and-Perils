@@ -32,15 +32,13 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("pause") and get_tree().paused:
 		emit_signal("resume")
 
-func start_battle(enemy_node: Node):
+func start_battle(enemy_id: int):
 	# Save player position and transition to the battle scene
 	State.player_position = player.position
 	#State.current_health = player.current_health
 	Global.health = player.current_health
+	Global.enemy_id = enemy_id
 	player.saveData()
 	print("SAVING DATA")
 	Global.battle_start = true
 	get_tree().change_scene_to_file(battle_scene)
-
-	# Mark the enemy to be removed after the battle
-	enemy_node.queue_free()

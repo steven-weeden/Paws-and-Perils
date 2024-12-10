@@ -18,6 +18,8 @@ enum{
 }
 
 func _ready() -> void:
+	if Global.is_enemy_fought(cat_id):
+		queue_free()
 	randomize()
 	
 func _process(delta: float) -> void:
@@ -48,7 +50,7 @@ func _process(delta: float) -> void:
 				Global.cat_fight2 = true
 			elif cat_id == 3:
 				Global.cat_fight3 = true
-			game_scene.start_battle(self)  # Pass this enemy node to be removed
+			game_scene.start_battle(cat_id)  # Pass this enemy node to be removed
 			
 
 func choose(array):

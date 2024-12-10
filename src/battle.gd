@@ -6,7 +6,6 @@ signal textbox_closed
 
 @export var enemies: Array = []  # Array of enemy Resource `.tres` files
 @export var enemy: Resource
-@export var battle_finished: bool = false
 @onready var rats = rat.new()
 @onready var bird_res: Resource = preload("res://src/Bird.tres")
 @onready var rat_res: Resource = preload("res://src/Rat.tres")

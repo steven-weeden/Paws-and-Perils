@@ -51,6 +51,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(1934, 608)
 scale = Vector2(7.48, 7.48)
+enemy_id = 5
 
 [node name="NPC(lime)" parent="NPCs" instance=ExtResource("8_yqmt7")]
 z_index = 1
@@ -71,6 +72,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(2004, -125)
 scale = Vector2(5, 5)
+enemy_id = 4
 
 [node name="NPC(goob)" parent="NPCs" instance=ExtResource("3_xviv1")]
 z_index = 1
@@ -81,6 +83,7 @@ scale = Vector2(3, 3)
 z_index = 2
 position = Vector2(-23311, 3001)
 scale = Vector2(4, 4)
+enemy_id = 6
 
 [node name="CanvasLayer#PauseMenu" parent="." instance=ExtResource("6_l41qg")]
 

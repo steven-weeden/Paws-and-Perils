@@ -11,6 +11,7 @@ var player
 var playerInArea
 @onready var game_scene = get_node("/root/World")
 @onready var battle = get_node("/root/World/Battle")
+@export var enemy_id: int
 
 enum{
 	IDLE,
@@ -19,6 +20,8 @@ enum{
 }
 
 func _ready() -> void:
+	if Global.is_enemy_fought(enemy_id):
+		queue_free()
 	randomize()
 	
 func _process(delta: float) -> void:
@@ -41,7 +44,7 @@ func _process(delta: float) -> void:
 	if playerInArea:
 		if Input.is_action_just_pressed("interact"):
 			Global.bird_fight = true;
-			game_scene.start_battle(self)  # Pass this enemy node to be removed
+			game_scene.start_battle(enemy_id)  # Pass this enemy node to be removed
 			
 
 func choose(array):
