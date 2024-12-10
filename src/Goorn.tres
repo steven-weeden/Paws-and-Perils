@@ -7,10 +7,10 @@
 script = ExtResource("1_rx272")
 name = "Goornelius"
 texture = ExtResource("2_wjin6")
-health = 35
-damage = 5
+health = 10
+damage = 1
 agility = 2
 defense = 3
 crit = 0.25
-EXPDefeat = 999
-GoldDefeat = 999
+EXPDefeat = 10
+GoldDefeat = 10

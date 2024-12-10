@@ -140,4 +140,6 @@ scale = Vector2(8, 8)
 [connection signal="update" from="." to="player" method="_on_world_update"]
 [connection signal="load" from="EscapeMenu/PauseMenu" to="player" method="_on_pause_menu_load"]
 [connection signal="save" from="EscapeMenu/PauseMenu" to="player" method="_on_pause_menu_save"]
+[connection signal="goobSlain" from="Battle" to="NPCs/NPC(goob)" method="_on_battle_goob_slain"]
 [connection signal="playerIsResting" from="StaticBody2D" to="player" method="_on_static_body_2d_player_is_resting"]
+[connection signal="playerIsResting" from="StaticBody2D" to="NPCs/NPC(goob)" method="_on_static_body_2d_player_is_resting"]

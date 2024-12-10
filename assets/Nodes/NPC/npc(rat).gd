@@ -21,6 +21,9 @@ func _ready() -> void:
 	#battles.connect("battle_finished", Callable(self, "_on_battle_finished"))
 	#battle.connect("battle_finished", Callable(self, "_on_battle_finished"))
 
+	#battles.connect("battle_finished", Callable(self, "_on_battle_finished"))
+	#battle.connect("battle_finished", Callable(self, "_on_battle_finished"))
+
 func _process(delta: float) -> void:
 	if Global.battle_finished == true && playerInArea:
 		Global.battle_finished = false
@@ -39,6 +42,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		playerInArea = true
 
+# Triggered when the player exits the enemy area
 # Triggered when the player exits the enemy area
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	playerInArea = false

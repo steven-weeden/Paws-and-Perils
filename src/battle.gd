@@ -27,6 +27,8 @@ var enm_choice
 var goob_battle: bool = false
 var enemy_num
 
+signal goobSlain
+
 
 func _ready():
 	if Global.battle_start == true:
@@ -35,7 +37,7 @@ func _ready():
 	
 	if Global.goob_fight == true:
 		enemy = goob_res
-		Global.goob_fight = false
+		Global.current_quest = 2
 	elif Global.rat_fight == true:
 		enemy = rat_res
 		Global.rat_fight = false
@@ -73,6 +75,9 @@ func _ready():
 	if enemy.name == "sans":
 		display_text("Hey kiddo, How'd I end up here?")
 		await display_text_and_wait("Hey kiddo, How'd I end up here?")
+		
+	chance = State.defense/10
+	rand = (randi_range(1,2))/10
 		
 	chance = State.defense/10
 	rand = (randi_range(1,2))/10
@@ -150,8 +155,6 @@ func enemy_turn():
 			$AnimationPlayer.play("player_death")
 			await $AnimationPlayer.animation_finished
 			
-			
-			
 			await show_death_screen()
 			return
 	
@@ -167,6 +170,9 @@ func _on_run_pressed() -> void:
 	print("PLAYER HEALTH", current_player_health)
 	get_tree().change_scene_to_file("res://assets/Scenes/GameScene.tscn")
 	print("Battle Finished")
+	if(Global.goob_fight):
+		Global.goob_fight = false
+		Global.quest_status = 1
 	end_battle()
 
 
@@ -257,6 +263,12 @@ func show_results_screen():
 	$ActionsPanel.hide()
 	$PlayerPanel.hide()
 	$EnemyContainer.hide()
+	
+	#Goob Battle Quest 
+	if(Global.goob_fight):
+		Global.goob_fight = false
+		Global.quest_status = 2
+		emit_signal("GoobSlain")
 	
 	results_screen.get_node("Continue").connect("pressed", Callable(self, "_on_continue_pressed"))
 	results_screen.show_screen()

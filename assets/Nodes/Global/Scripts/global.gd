@@ -20,6 +20,7 @@ var cat_fight3: bool = false
 var freddy_fight: bool = false
 
 var current_quest = 0
+var quest_status = 0
 
 var health = 0
 
@@ -33,6 +34,8 @@ func mark_item_picked_up(item_id: String):
 	picked_up_items[item_id] = true
 
 func is_enemy_fought(enemy_id: int) -> bool:
+	if enemy_id == 0:
+		pass
 	return enemies_defeated.get(enemy_id, false)
 	
 func mark_enemy_defeated(enemy_id: int):

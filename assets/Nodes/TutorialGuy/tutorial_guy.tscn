@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b41nj411bgfcu"]
+[gd_scene load_steps=18 format=3 uid="uid://b41nj411bgfcu"]
 
 [ext_resource type="Script" path="res://assets/Nodes/TutorialGuy/tutorial_guy.gd" id="1_d8l41"]
 [ext_resource type="Texture2D" uid="uid://btq33uc47xiu8" path="res://assets/Sprites/characterSprites/Goober.png" id="1_ibuqw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/QuestFunc.gd" id="4_qfiog"]
 [ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/MovementQuestCheck.gd" id="5_cgwqp"]
 [ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/BattleGoornCheck.gd" id="6_lqylm"]
+[ext_resource type="Script" path="res://assets/Nodes/QuestBar/Scripts/heal_check.gd" id="7_gtfrv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1xcs"]
 atlas = ExtResource("1_ibuqw")
@@ -103,10 +104,11 @@ shape = SubResource("CircleShape2D_ymxih")
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_jl70i")
 
-[node name="Dialog" parent="." node_paths=PackedStringArray("quest1", "quest2") instance=ExtResource("3_nv5ax")]
+[node name="Dialog" parent="." node_paths=PackedStringArray("quest1", "quest2", "quest3") instance=ExtResource("3_nv5ax")]
 z_index = 1005
 quest1 = NodePath("MovementQuest")
 quest2 = NodePath("BattleGoornQuest")
+quest3 = NodePath("HealQuest")
 d_file = "<null>"
 
 [node name="Accept" type="Button" parent="Dialog"]
@@ -166,9 +168,22 @@ quest_status = 0
 [node name="BattleGoornCheck" type="Node2D" parent="Dialog"]
 script = ExtResource("6_lqylm")
 
+[node name="HealCheck" type="Node2D" parent="Dialog"]
+script = ExtResource("7_gtfrv")
+
+[node name="HealQuest" type="Node2D" parent="Dialog"]
+script = ExtResource("4_qfiog")
+quest_name = "Heal Any Wounds!"
+quest_description = "Walk over to the Cardboard box and heal!"
+reached_goal_text = "All healed!"
+quest_status = 0
+
+[connection signal="goobSlain" from="." to="Dialog/BattleGoornCheck" method="_on_tutorial_guy_goob_slain"]
+[connection signal="playerRest" from="." to="Dialog/HealCheck" method="_on_tutorial_guy_player_rest"]
 [connection signal="body_entered" from="chatDetection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="chatDetection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="dialogFinished" from="Dialog" to="." method="_on_dialog_dialog_finished"]
 [connection signal="pressed" from="Dialog/Accept" to="Dialog" method="_on_accept_pressed"]
 [connection signal="pressed" from="Dialog/Decline" to="Dialog" method="_on_decline_pressed"]
 [connection signal="pressed" from="Dialog/Complete" to="Dialog" method="_on_complete_pressed"]
+[connection signal="pressed" from="Dialog/Fight" to="Dialog/BattleGoornCheck" method="_on_fight_pressed"]
